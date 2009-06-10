@@ -1,11 +1,11 @@
 === Admin Expert Mode ===
 Contributors: Scott Reilly
 Donate link: http://coffee2code.com
-Tags: admin, expert, remove inline documentation
+Tags: admin, expert, remove inline documentation, coffee2code
 Requires at least: 2.7
-Tested up to: 2.7.1
-Stable tag: trunk
-Version: 1.0
+Tested up to: 2.8
+Stable tag: 1.1
+Version: 1.1
 
 Hide all inline documentation in the admin pages for users who are familiar with the various features and input fields of the WordPress admin.
 
@@ -18,6 +18,12 @@ WordPress 2.7 introduced a variety inline documentation that provide explanation
 This plugin's behavior is made available as a per-user profile option.  Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
 Specifically, this plugin removes:
+
+- Categories
+* Description of "Category Name"
+* Description of "Category Slug"
+* Description of "Category Parent"
+* Description of "Description"
 
 - Edit Post
 * Description of "Custom Fields"
@@ -36,6 +42,10 @@ Specifically, this plugin removes:
 * Description of "Target"
 * Description of "Link Relationships (XFN)"
 
+- Tags
+* Description of "Tag name"
+* Description of "Tag slug"
+
 - Widgets
 * Text indicating that widgets are added from the listing of widgets on the left.
 
@@ -49,7 +59,7 @@ NOTE: This plugin does NOT remove input field labels or section headers, nor any
 
 == Installation ==
 
-1. Unzip `admin-expert-mode-v1.0.zip` inside the `/wp-content/plugins/` directory for your site
+1. Unzip `admin-expert-mode.zip` inside the `/wp-content/plugins/` directory for your site
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 

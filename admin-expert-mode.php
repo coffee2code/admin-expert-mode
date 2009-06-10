@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.0
+Version: 1.1
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode
 Author: Scott Reilly
 Author URI: http://coffee2code.com
@@ -17,6 +17,11 @@ themselves must do so individually by going into their profile, checking the fie
 'Update Profile' button.
 
 Specifically, it removes:
+	- Categories
+		* Description of "Category Name"
+		* Description of "Category Slug"
+		* Description of "Category Parent"
+		* Description of "Description"
 	- Edit Post
 		* Description of "Custom Fields"
 		* Description of "Excerpts"
@@ -31,6 +36,9 @@ Specifically, it removes:
 		* Description of "Description"
 		* Description of "Target"
 		* Description of "Link Relationships (XFN)"
+	- Tags
+		* Description of "Tag name"
+		* Description of "Tag slug"
 	- Widgets
 		* Text indicating that widgets are added from the listing of widgets on the left.
 	- Manage Plugins
@@ -39,7 +47,7 @@ Specifically, it removes:
 		* Description of the "Recently Active Plugins" section
 		
 
-Compatible with WordPress 2.7+.
+Compatible with WordPress 2.7+, 2.8.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
@@ -106,7 +114,8 @@ class AdminExpertMode {
 		#namediv .inside > p, #descriptiondiv .inside > p, #linktargetdiv .inside > p,
 		#linkxfndiv .inside > p, #addressdiv .inside > p,
 		#current-widgets-head #sidebar-info p:last-child,
-		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p { display:none; }
+		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
+		#addcat .form-field p, #addtag .form-field p { display:none; }
 		</style>
 CSS;
 	}
