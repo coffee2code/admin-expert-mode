@@ -1,6 +1,6 @@
 === Admin Expert Mode ===
 Contributors: Scott Reilly
-Donate link: http://coffee2code.com
+Donate link: http://coffee2code.com/donate
 Tags: admin, expert, remove inline documentation, coffee2code
 Requires at least: 2.7
 Tested up to: 2.8
