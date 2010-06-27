@@ -7,11 +7,11 @@ Tested up to: 3.0.1
 Stable tag: 1.2
 Version: 1.2
 
-Hide all inline documentation in the admin pages for users familiar with the various features and input fields of the WordPress admin.
+Allow users with access to the adminstration section to hide inline documentation and help text, which generally target beginning users.
 
 == Description ==
 
-Hide all inline documentation in the administration pages for users who are familiar with the various features and input fields of the WordPress admin.
+Allow users with access to the adminstration section to hide inline documentation and help text, which generally target beginning users.
 
 WordPress 2.7 introduced a variety inline documentation that provide explanations for various feature and input fields (i.e. things like explanations of excerpts, trackbacks, custom fields, page parents, etc).  These are great for newcomers to WordPress.  For those sufficiently familiar with WordPress, these bits of text are no longer necessary and merely provide visual noise.  This plugin gets rid of those descriptive texts.
 
@@ -65,6 +65,10 @@ NOTE: This plugin does NOT remove input field labels or section headers, nor any
 1. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
 == Changelog ==
+
+= ALPHA =
+* Check for is_admin() before defining class rather than during constructor
+* Minor code reformatting (spacing)
 
 = 1.2 =
 * Display notice on plugin's activation to remind admin that expert mode must be enabled for each user before it takes effect for the user

@@ -53,14 +53,14 @@ Specifically, it removes:
 		* Help text for "Popular Tags"
 		
 
-Compatible with WordPress 2.8+, 2.9+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
 
 Installation:
 
-1. Download the file http://coffee2code.com/wp-plugins/admin-expert-mode.zip and unzip it into your 
+1. Download the file http://coffee2code.com/wp-plugins/admin-expert-mode.zip and unzip it into your
 /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. Each user who wishes to enable expert mode must do so individually by going into their profile, checking the field labeled 'Expert mode', and then pressing the 'Update Profile' button.
@@ -70,8 +70,8 @@ Installation:
 /*
 Copyright (c) 2009-2010 by Scott Reilly (aka coffee2code)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
 modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the 
 Software is furnished to do so, subject to the following conditions:
 
@@ -83,7 +83,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( !class_exists('AdminExpertMode') ) :
+if ( is_admin() && !class_exists( 'AdminExpertMode' ) ) :
 
 class AdminExpertMode {
 	var $admin_options_name = 'c2c_admin_expert_mode';
@@ -96,19 +96,18 @@ class AdminExpertMode {
 	var $is_filtered_true = false; // Was admin expert mode activated via add_filter()?
 
 	function AdminExpertMode() {
-		if ( !is_admin() ) return;
 		global $pagenow;
 
-		$this->prompt = __('Expert mode');
-		$this->help_text = __('Enable expert mode if you are familiar with WordPress and don\'t need the inline documentation in the admin.');
+		$this->prompt = __( 'Expert mode' );
+		$this->help_text = __( 'Enable expert mode if you are familiar with WordPress and don\'t need the inline documentation in the admin.' );
 		$this->config[$this->field_name] = 0; // Admin Expert Mode is assumed to be initially off
 
-		add_action('admin_head', array(&$this, 'add_css'));
+		add_action( 'admin_head', array( &$this, 'add_css' ) );
 		add_action( 'admin_notices', array( &$this, 'display_activation_notice' ) );
 		add_action( 'activate_'.str_replace( trailingslashit( dirname( dirname( __FILE__ ) ) ), '', __FILE__ ), array( &$this, 'plugin_activated' ) );
 		if ( 'profile.php' == $pagenow ) {
-			add_action('admin_init', array(&$this, 'maybe_save_options'));
-			add_action('profile_personal_options', array(&$this, 'show_option'));
+			add_action( 'admin_init', array(&$this, 'maybe_save_options' ) );
+			add_action( 'profile_personal_options', array(&$this, 'show_option' ) );
 		}
 	}
 
@@ -124,7 +123,8 @@ class AdminExpertMode {
 	}
 
 	function is_admin_expert_mode_active() {
-		if ( $this->is_active ) return true;
+		if ( $this->is_active )
+			return true;
 		if ( apply_filters( 'c2c_admin_expert_mode', false ) || apply_filters( 'c2c_admin_expert_mode_' . get_user_option( 'user_login' ), false ) ) {
 			$this->is_active = true;
 			$this->is_filtered_true = true;
@@ -151,6 +151,7 @@ class AdminExpertMode {
 		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
 		#addcat .form-field p, #addtag .form-field p, .install-help { display:none; }
 		</style>
+
 CSS;
 	}
 
@@ -164,22 +165,24 @@ CSS;
 			<td><label for="{$this->field_name}"><input type="checkbox" value="true" id="{$this->field_name}" name="{$this->field_name}"{$checked}/> {$this->help_text}</label></td>
 			</tr>
 		</table>
+
 HTML;
 	}
 
 	function get_options() {
-		if ( !empty($this->options) ) return $this->options;
-		$existing_options = get_user_option($this->admin_options_name);
-		$this->options = wp_parse_args($existing_options, $this->config);
+		if ( !empty( $this->options ) )
+			return $this->options;
+		$existing_options = get_user_option( $this->admin_options_name );
+		$this->options = wp_parse_args( $existing_options, $this->config );
 		return $this->options;
 	}
 
 	function maybe_save_options() {
 		$user = wp_get_current_user();
-		if ( isset($_POST['submit']) ) {
+		if ( isset( $_POST['submit'] ) ) {
 			$options = $this->get_options();
 			$options[$this->field_name] = $_POST[$this->field_name] ? 1 : 0;
-			update_user_option($user->ID, $this->admin_options_name, $options);
+			update_user_option( $user->ID, $this->admin_options_name, $options );
 			$this->options = $options;
 		}
 	}
@@ -188,7 +191,7 @@ HTML;
 
 endif; // end if !class_exists()
 
-if ( class_exists('AdminExpertMode') )
+if ( class_exists( 'AdminExpertMode' ) )
 	new AdminExpertMode();
 
 ?>
