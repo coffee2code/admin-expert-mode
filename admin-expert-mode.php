@@ -2,18 +2,18 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.5
+ * @version 1.6
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.5
+Version: 1.6
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: admin-expert-mode
 Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -21,7 +21,7 @@ Compatible with WordPress 2.8+, 2.9+, 3.0+.
 */
 
 /*
-Copyright (c) 2009-2010 by Scott Reilly (aka coffee2code)
+Copyright (c) 2009-2011 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
@@ -36,35 +36,43 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( is_admin() && !class_exists( 'AdminExpertMode' ) ) :
+if ( is_admin() && !class_exists( 'c2c_AdminExpertMode' ) ) :
 
-class AdminExpertMode {
-	var $admin_options_name = 'c2c_admin_expert_mode';
-	var $field_name = 'admin_expert_mode';
-	var $textdomain = 'admin-expert-mode';
-	var $textdomain_subdir = 'lang';
-	var $prompt = '';
-	var $help_text = '';
-	var $config = array();
-	var $activating = false;
-	var $is_active = false; // Has admin expert mode been determined to be active?
+class c2c_AdminExpertMode {
+	private static $admin_options_name = 'c2c_admin_expert_mode';
+	private static $field_name         = 'admin_expert_mode';
+	private static $textdomain         = 'admin-expert-mode';
+	private static $textdomain_subdir  = 'lang';
+	private static $prompt             = '';
+	private static $help_text          = '';
+	private static $config             = array();
+	private static $options            = array();
+	private static $activating         = false;
+	private static $is_active          = false; // Has admin expert mode been determined to be active?
 
 	/**
 	 * Constructor
 	 */
-	function AdminExpertMode() {
+	public static function init() {
+		add_action( 'init', array( __CLASS__, 'do_init' ) );
+		register_activation_hook( __FILE__, array( __CLASS__, 'plugin_activated' ) );
+	}
+
+	/**
+	 * Perform initialization
+	 */
+	public static function do_init() {
 		global $pagenow;
+		self::load_textdomain();
 
-		$this->prompt = __( 'Expert mode', $this->textdomain );
-		$this->help_text = __( 'Enable expert mode if you are familiar with WordPress and don\'t need the inline documentation in the admin.', $this->textdomain );
+		self::$prompt =    __( 'Expert mode', self::$textdomain );
+		self::$help_text = __( 'Enable expert mode (if you are familiar with WordPress and don\'t need the inline documentation in the admin).', self::$textdomain );
 
-		add_action( 'admin_head', array( &$this, 'add_css' ) );
-		add_action( 'admin_notices', array( &$this, 'display_activation_notice' ) );
-		add_action( 'activate_'.str_replace( trailingslashit( dirname( dirname( __FILE__ ) ) ), '', __FILE__ ), array( &$this, 'plugin_activated' ) );
-		add_action( 'init', array( &$this, 'load_textdomain' ) );
+		add_action( 'admin_head',    array( __CLASS__, 'add_css' ) );
+		add_action( 'admin_notices', array( __CLASS__, 'display_activation_notice' ) );
 		if ( 'profile.php' == $pagenow ) {
-			add_action( 'admin_init', array( &$this, 'maybe_save_options' ) );
-			add_action( 'profile_personal_options', array( &$this, 'show_option' ) );
+			add_action( 'admin_init',               array( __CLASS__, 'maybe_save_options' ) );
+			add_action( 'profile_personal_options', array( __CLASS__, 'show_option' ) );
 		}
 	}
 
@@ -73,9 +81,9 @@ class AdminExpertMode {
 	 *
 	 * @return void
 	 */
-	function load_textdomain() {
-		$subdir = empty( $this->textdomain_subdir ) ? '' : '/'.$this->textdomain_subdir;
-		load_plugin_textdomain( $this->textdomain, false, basename( dirname( __FILE__ ) ) . $subdir );
+	public static function load_textdomain() {
+		$subdir = empty( self::$textdomain_subdir ) ? '' : ( '/' . self::$textdomain_subdir );
+		load_plugin_textdomain( self::$textdomain, false, basename( dirname( __FILE__ ) ) . $subdir );
 	}
 
 	/**
@@ -83,7 +91,7 @@ class AdminExpertMode {
 	 *
 	 * @return void
 	 */
-	function plugin_activated() {
+	public static function plugin_activated() {
 		set_transient( 'aem_activated', 'show', 10 );
 	}
 
@@ -92,9 +100,9 @@ class AdminExpertMode {
 	 *
 	 * @return void (Text is echoed.)
 	 */
-	function display_activation_notice() {
+	public static function display_activation_notice() {
 		if ( get_transient( 'aem_activated' ) ) {
-			$msg = sprintf( __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', $this->textdomain ), admin_url( 'profile.php' ) );
+			$msg = sprintf( __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', self::$textdomain ), admin_url( 'profile.php' ) );
 			echo "<div id='message' class='updated fade'><p>$msg</p></div>";
 		}
 	}
@@ -108,11 +116,11 @@ class AdminExpertMode {
 	 *
 	 * @return void (Text is echoed.)
 	 */
-	function is_admin_expert_mode_active() {
-		$options = $this->get_options();
-		if ( $this->is_active || apply_filters( 'c2c_admin_expert_mode', $options[$this->field_name], get_user_option( 'user_login' ) ) )
-			$this->is_active = true;
-		return $this->is_active;
+	public static function is_admin_expert_mode_active() {
+		$options = self::get_options();
+		if ( self::$is_active || apply_filters( 'c2c_admin_expert_mode', $options[self::$field_name], get_user_option( 'user_login' ) ) )
+			self::$is_active = true;
+		return self::$is_active;
 	}
 
 	/**
@@ -120,8 +128,8 @@ class AdminExpertMode {
 	 *
 	 * @return void (Text is echoed.)
 	 */
-	function add_css() {
-		if ( !$this->is_admin_expert_mode_active() )
+	public static function add_css() {
+		if ( !self::is_admin_expert_mode_active() )
 			return;
 
 		echo <<<CSS
@@ -144,18 +152,12 @@ CSS;
 	 *
 	 * @return void (Text is echoed.)
 	 */
-	function show_option( $user ) {
-		$options = $this->get_options();
-		$checked = $options[$this->field_name] ? ' checked="checked"' : '';
-		echo <<<HTML
-		<table class="form-table">
-			<tr>
-			<th scope="row">{$this->prompt}</th>
-			<td><label for="{$this->field_name}"><input type="checkbox" value="true" id="{$this->field_name}" name="{$this->field_name}"{$checked}/> {$this->help_text}</label></td>
-			</tr>
-		</table>
-
-HTML;
+	public static function show_option( $user ) {
+		$options = self::get_options();
+		$checked = $options[self::$field_name] ? ' checked="checked"' : '';
+		echo '<table class="form-table"><tr><th scope="row">' . self::$prompt . '</th>';
+		echo '<td><label for="' . self::$field_name . '"><input type="checkbox" value="true" id="' . self::$field_name . '" name="' . self::$field_name . "\"{$checked}/>\n";
+		echo self::$help_text . '</label></td></tr></table>';
 	}
 
 	/**
@@ -163,13 +165,13 @@ HTML;
 	 *
 	 * @return array The plugin's settings
 	 */
-	function get_options() {
-		if ( !empty( $this->options ) )
-			return $this->options;
-		$existing_options = get_user_option( $this->admin_options_name );
+	public static function get_options() {
+		if ( !empty( self::$options ) )
+			return self::$options;
+		$existing_options = get_user_option( self::$admin_options_name );
 		$default = apply_filters( 'c2c_admin_expert_mode_default', false );
-		$this->options = wp_parse_args( $existing_options, array( $this->field_name => $default ) );
-		return $this->options;
+		self::$options = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
+		return self::$options;
 	}
 
 	/**
@@ -177,19 +179,19 @@ HTML;
 	 *
 	 * @return void
 	 */
-	function maybe_save_options() {
+	public static function maybe_save_options() {
 		$user = wp_get_current_user();
 		if ( isset( $_POST['submit'] ) ) {
-			$options = $this->get_options();
-			$options[$this->field_name] = $_POST[$this->field_name] ? 1 : 0;
-			update_user_option( $user->ID, $this->admin_options_name, $options );
-			$this->options = $options;
+			$options = self::get_options();
+			$options[self::$field_name] = $_POST[self::$field_name] ? 1 : 0;
+			update_user_option( $user->ID, self::$admin_options_name, $options );
+			self::$options = $options;
 		}
 	}
 
-} // end AdminExpertMode
+} // end c2c_AdminExpertMode
 
-$GLOBALS['c2c_admin_expert_mode'] = new AdminExpertMode();
+c2c_AdminExpertMode::init();
 
 endif; // end if !class_exists()
 

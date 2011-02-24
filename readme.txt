@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: admin, expert, help, remove inline documentation, coffee2code
 Requires at least: 2.8
-Tested up to: 3.0.1
-Stable tag: 1.5
-Version: 1.5
+Tested up to: 3.1
+Stable tag: 1.6
+Version: 1.6
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -66,6 +66,8 @@ Specifically, this plugin removes:
 
 NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data.
 
+Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Author Homepage]:(http://coffee2code.com)
+
 
 == Installation ==
 
@@ -114,6 +116,15 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 1.6 =
+* Rename class from 'AdminExpertMode' to 'c2c_AdminExpertMode'
+* Switch from object instantiation to direct class invocation
+* Explicitly declare all functions public static and class variables private static
+* Add .pot file
+* Documentation tweaks
+* Note compatibility through WP 3.1+
+* Update copyright date (2011)
+
 = 1.5 =
 * Display notice on plugin's activation to remind admin that expert mode must be enabled for each user before it takes effect for the user
 * Allow configuring of default expert mode state for all users, via 'c2c_admin_expert_mode_default' filter (initially set to false)
@@ -153,6 +164,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 1.6 =
+Minor update: implementation changes; noted compatibility with WP 3.1+ and updated copyright date.
 
 = 1.5 =
 Recommended update! Highlights: hides newly added help text, displays reminder on plugin activation, added filters, localization support, dropped pre-WP 2.8 compatibility, added verified WP 3.0 compatibility.
