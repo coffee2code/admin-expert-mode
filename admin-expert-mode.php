@@ -2,18 +2,18 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.6
+ * @version 1.7
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.6
+Version: 1.7
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: admin-expert-mode
 Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -36,7 +36,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( is_admin() && !class_exists( 'c2c_AdminExpertMode' ) ) :
+if ( is_admin() && ! class_exists( 'c2c_AdminExpertMode' ) ) :
 
 class c2c_AdminExpertMode {
 	private static $admin_options_name = 'c2c_admin_expert_mode';
@@ -129,7 +129,7 @@ class c2c_AdminExpertMode {
 	 * @return void (Text is echoed.)
 	 */
 	public static function add_css() {
-		if ( !self::is_admin_expert_mode_active() )
+		if ( ! self::is_admin_expert_mode_active() )
 			return;
 
 		echo <<<CSS
@@ -140,6 +140,10 @@ class c2c_AdminExpertMode {
 		#namediv .inside > p, #descriptiondiv .inside > p, #linktargetdiv .inside > p,
 		#linkxfndiv .inside > p, #addressdiv .inside > p,
 		#current-widgets-head #sidebar-info p:last-child,
+		#upload-form label,
+		.tools-php p.description,
+		.options-general-php span.description,
+		.options-permalink-php form p,
 		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
 		#addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display:none; }
 		</style>
@@ -166,7 +170,7 @@ CSS;
 	 * @return array The plugin's settings
 	 */
 	public static function get_options() {
-		if ( !empty( self::$options ) )
+		if ( ! empty( self::$options ) )
 			return self::$options;
 		$existing_options = get_user_option( self::$admin_options_name );
 		$default = apply_filters( 'c2c_admin_expert_mode_default', false );

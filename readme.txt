@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: admin, expert, help, remove inline documentation, coffee2code
 Requires at least: 2.8
-Tested up to: 3.1
-Stable tag: 1.6
-Version: 1.6
+Tested up to: 3.2
+Stable tag: 1.7
+Version: 1.7
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -55,6 +55,9 @@ Specifically, this plugin removes:
     * Help text for search field
     * Help text for "Feature Filter"
 
+* Themes - Custom Header
+    * Help text simply stating you can upload files from you computer
+
 * Manage Plugins
     * Description of what plugins are and that they are activated/deactivated on that page
     * Text indicating that broken plugins can be renamed to remove them from being active
@@ -64,9 +67,19 @@ Specifically, this plugin removes:
     * Help text for search field
     * Help text for "Popular Tags"
 
+* Tools
+    * Description paragraph for "Press This"
+
+* Settings - General
+    * Extra help text after input fields for "Tagline", "Site address (URL)", "E-mail address", "Timezone"
+
+* Settings - Permalinks
+    * Help text about "Common Settings"
+    * Help text about "Optional"
+
 NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data.
 
-Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Author Homepage]:(http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -116,6 +129,12 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 1.7 =
+* Remove more help text on Custom Header, Tools, Settings - General, and Settings - Permalinks pages
+* Note compatibility through WP 3.2+
+* Tiny code formatting change (spacing)
+* Fix plugin homepage and author links in description in readme.txt
+
 = 1.6 =
 * Rename class from 'AdminExpertMode' to 'c2c_AdminExpertMode'
 * Switch from object instantiation to direct class invocation
@@ -164,6 +183,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 1.7 =
+Minor update: removed more help text and noted compatibility with WP 3.2+
 
 = 1.6 =
 Minor update: implementation changes; noted compatibility with WP 3.1+ and updated copyright date.
