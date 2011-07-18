@@ -4,8 +4,8 @@ Donate link: http://coffee2code.com/donate
 Tags: admin, expert, help, remove inline documentation, coffee2code
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 1.7
-Version: 1.7
+Stable tag: 1.7.1
+Version: 1.7.1
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -129,6 +129,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 1.7.1 =
+* Fix accidental hiding of submit button on permalinks settings page
+
 = 1.7 =
 * Remove more help text on Custom Header, Tools, Settings - General, and Settings - Permalinks pages
 * Note compatibility through WP 3.2+
@@ -183,6 +186,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+Bugfix release! Fixed accidental hiding of submit button on permalinks settings page
 
 = 1.7 =
 Minor update: removed more help text and noted compatibility with WP 3.2+

@@ -2,11 +2,11 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.7
+ * @version 1.7.1
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.7
+Version: 1.7.1
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
@@ -146,6 +146,7 @@ class c2c_AdminExpertMode {
 		.options-permalink-php form p,
 		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
 		#addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display:none; }
+		.options-permalink-php form p.submit { display:block; }
 		</style>
 
 CSS;
