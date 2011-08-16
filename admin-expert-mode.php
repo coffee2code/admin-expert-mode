@@ -2,11 +2,11 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.7.1
+ * @version 1.7.2
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.7.1
+Version: 1.7.2
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
@@ -18,6 +18,10 @@ Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
 =>> Or visit: http://wordpress.org/extend/plugins/admin-expert-mode/
+
+TODO:
+	* Change activation admin notice to recognize if settings is already true for user and say so.
+
 */
 
 /*
@@ -146,7 +150,7 @@ class c2c_AdminExpertMode {
 		.options-permalink-php form p,
 		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
 		#addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display:none; }
-		.options-permalink-php form p.submit { display:block; }
+		.options-permalink-php form p { display:block; }
 		</style>
 
 CSS;
