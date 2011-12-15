@@ -1,0 +1,13 @@
+#postexcerpt .inside > p, #trackbacksdiv .inside > p:last-child, #postcustom .inside > p,
+#pagecustomdiv .inside > p, #pagecommentstatusdiv .inside > p:last-child,
+#pageparentdiv .inside > select + p, #pageparentdiv .inside > p:last-child,
+#namediv .inside > p, #descriptiondiv .inside > p, #linktargetdiv .inside > p,
+#linkxfndiv .inside > p, #addressdiv .inside > p,
+#current-widgets-head #sidebar-info p:last-child,
+#upload-form label,
+.tools-php p.description,
+.options-general-php span.description,
+.options-permalink-php form p,
+#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
+#addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display:none; }
+.options-permalink-php form p { display:block; }

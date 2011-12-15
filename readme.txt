@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: admin, expert, help, remove inline documentation, coffee2code
 Requires at least: 2.8
-Tested up to: 3.2
-Stable tag: 1.7.2
-Version: 1.7.2
+Tested up to: 3.3
+Stable tag: 1.8
+Version: 1.8
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -79,7 +79,7 @@ Specifically, this plugin removes:
 
 NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -88,6 +88,14 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
+
+== Screenshots ==
+
+1. A screenshot of some of the panels of the 'Edit Post' admin page *after* this plugin is activated.
+2. A screenshot of the same panels of the 'Edit Post' admin page as they appear in a standard WP 3.3 installation. See the difference?
+3. A screenshot of the plugin's profile checkbox on the user Profile page.
+4. A screenshot of the form on the 'Categories' admin page *after* this plugin is activated.
+5. A screenshot of the form on the 'Categories' admin page as they appear in a standard WP 3.3 installation. See the difference?
 
 == Filters ==
 
@@ -128,6 +136,26 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Changelog ==
+
+= 1.8 =
+* Change activation admin notice to recognize if settings is already true for user and say so
+* Hook 'admin_enqueue_scripts' action instead of 'admin_head' to output CSS
+* Hook 'load-profile.php' to add action for the profile.php page rather than using pagenow
+* Remove load_textdomain() and private static $textdomain_subdir and just load textdomain directly in do_init()
+* Add version() to return plugin version
+* Add register_styles(), enqueue_admin_css(), register_profile_page_hooks()
+* Move all CSS into admin.css
+* Remove add_css()
+* Change check in maybe_save_options() to ensure profile options are being updated
+* Update screenshots for WP 3.3
+* Add two new screenshots
+* Note compatibility through WP 3.3+
+* Create 'lang' subdirectory and move .pot file into it
+* Regenerate .pot
+* Add link to plugin directory page to readme.txt
+* Add 'Domain Path' directive to top of main plugin file
+* Minor code reformatting (spacing)
+* Update copyright date (2012)
 
 = 1.7.2 =
 * Fix accidental hiding of permalink rules on permalinks settings page
@@ -181,14 +209,10 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Initial release
 
 
-== Screenshots ==
-
-1. A screenshot of some of the panels of the 'Edit Page' admin page *after* this plugin is activated.
-2. A screenshot of the same panels of the 'Edit Page' admin page as they appear in a standard WP 2.7 installation. See the difference?
-3. A screenshot of the plugin's profile checkbox on the user Profile page.
-
-
 == Upgrade Notice ==
+
+= 1.8 =
+Recommended update. Highlights: various code improvements; enqueue CSS; noted compatibility through WP 3.3+
 
 = 1.7.2 =
 Bugfix release. Fixed accidental hiding of permalink rules on permalinks settings page

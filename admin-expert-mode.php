@@ -2,30 +2,27 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.7.2
+ * @version 1.8
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.7.2
+Version: 1.8
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: admin-expert-mode
+Domain Path: /lang/
 Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+, 3.3+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
 =>> Or visit: http://wordpress.org/extend/plugins/admin-expert-mode/
-
-TODO:
-	* Change activation admin notice to recognize if settings is already true for user and say so.
-
 */
 
 /*
-Copyright (c) 2009-2011 by Scott Reilly (aka coffee2code)
+Copyright (c) 2009-2012 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
@@ -46,13 +43,21 @@ class c2c_AdminExpertMode {
 	private static $admin_options_name = 'c2c_admin_expert_mode';
 	private static $field_name         = 'admin_expert_mode';
 	private static $textdomain         = 'admin-expert-mode';
-	private static $textdomain_subdir  = 'lang';
 	private static $prompt             = '';
 	private static $help_text          = '';
 	private static $config             = array();
 	private static $options            = array();
 	private static $activating         = false;
 	private static $is_active          = false; // Has admin expert mode been determined to be active?
+
+	/**
+	 * Returns version of the plugin.
+	 *
+	 * @since 1.8
+	 */
+	public static function version() {
+		return '1.8';
+	}
 
 	/**
 	 * Constructor
@@ -66,28 +71,25 @@ class c2c_AdminExpertMode {
 	 * Perform initialization
 	 */
 	public static function do_init() {
-		global $pagenow;
-		self::load_textdomain();
+		load_plugin_textdomain( self::$textdomain, false, basename( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'lang' );
 
 		self::$prompt =    __( 'Expert mode', self::$textdomain );
 		self::$help_text = __( 'Enable expert mode (if you are familiar with WordPress and don\'t need the inline documentation in the admin).', self::$textdomain );
 
-		add_action( 'admin_head',    array( __CLASS__, 'add_css' ) );
-		add_action( 'admin_notices', array( __CLASS__, 'display_activation_notice' ) );
-		if ( 'profile.php' == $pagenow ) {
-			add_action( 'admin_init',               array( __CLASS__, 'maybe_save_options' ) );
-			add_action( 'profile_personal_options', array( __CLASS__, 'show_option' ) );
-		}
+		add_action( 'admin_notices',         array( __CLASS__, 'display_activation_notice' ) );
+		add_action( 'load-profile.php',      array( __CLASS__, 'register_profile_page_hooks' ) );
+		// Register and enqueue styles for admin page
+		self::register_styles();
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_css' ) );
 	}
 
 	/**
-	 * Loads the localization textdomain for the plugin.
+	 * Filters/actions to hook on the admin profile.php page.
 	 *
-	 * @return void
 	 */
-	public static function load_textdomain() {
-		$subdir = empty( self::$textdomain_subdir ) ? '' : ( '/' . self::$textdomain_subdir );
-		load_plugin_textdomain( self::$textdomain, false, basename( dirname( __FILE__ ) ) . $subdir );
+	public static function register_profile_page_hooks() {
+		self::maybe_save_options();
+		add_action( 'profile_personal_options', array( __CLASS__, 'show_option' ) );
 	}
 
 	/**
@@ -106,7 +108,11 @@ class c2c_AdminExpertMode {
 	 */
 	public static function display_activation_notice() {
 		if ( get_transient( 'aem_activated' ) ) {
-			$msg = sprintf( __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', self::$textdomain ), admin_url( 'profile.php' ) );
+			if ( self::is_admin_expert_mode_active() )
+				$msg = __( 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="%s" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)', self::$textdomain );
+			else
+				$msg = __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', self::$textdomain );
+			$msg = sprintf( $msg, admin_url( 'profile.php' ) );
 			echo "<div id='message' class='updated fade'><p>$msg</p></div>";
 		}
 	}
@@ -128,32 +134,22 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
-	 * Outputs CSS if the user has admin expert mode activated.
+	 * Registers styles.
 	 *
-	 * @return void (Text is echoed.)
+	 * @since 1.8
 	 */
-	public static function add_css() {
-		if ( ! self::is_admin_expert_mode_active() )
-			return;
+	public static function register_styles() {
+		wp_register_style( __CLASS__ . '_admin', plugins_url( 'admin.css', __FILE__ ) );
+	}
 
-		echo <<<CSS
-		<style type="text/css">
-		#postexcerpt .inside > p, #trackbacksdiv .inside > p:last-child, #postcustom .inside > p, 
-		#pagecustomdiv .inside > p, #pagecommentstatusdiv .inside > p:last-child, 
-		#pageparentdiv .inside > select + p, #pageparentdiv .inside > p:last-child,
-		#namediv .inside > p, #descriptiondiv .inside > p, #linktargetdiv .inside > p,
-		#linkxfndiv .inside > p, #addressdiv .inside > p,
-		#current-widgets-head #sidebar-info p:last-child,
-		#upload-form label,
-		.tools-php p.description,
-		.options-general-php span.description,
-		.options-permalink-php form p,
-		#icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
-		#addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display:none; }
-		.options-permalink-php form p { display:block; }
-		</style>
-
-CSS;
+	/**
+	 * Enqueues stylesheets if the user has admin expert mode activated.
+	 *
+	 * @since 1.8
+	 */
+	public static function enqueue_admin_css() {
+		if ( self::is_admin_expert_mode_active() )
+			wp_enqueue_style( __CLASS__ . '_admin' );
 	}
 
 	/**
@@ -190,7 +186,7 @@ CSS;
 	 */
 	public static function maybe_save_options() {
 		$user = wp_get_current_user();
-		if ( isset( $_POST['submit'] ) ) {
+		if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' ) {
 			$options = self::get_options();
 			$options[self::$field_name] = $_POST[self::$field_name] ? 1 : 0;
 			update_user_option( $user->ID, self::$admin_options_name, $options );
