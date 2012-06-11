@@ -2,19 +2,21 @@
 /**
  * @package Admin_Expert_Mode
  * @author Scott Reilly
- * @version 1.8
+ * @version 1.8.1
  */
 /*
 Plugin Name: Admin Expert Mode
-Version: 1.8
+Version: 1.8.1
 Plugin URI: http://coffee2code.com/wp-plugins/admin-expert-mode/
 Author: Scott Reilly
-Author URI: http://coffee2code.com
+Author URI: http://coffee2code.com/
 Text Domain: admin-expert-mode
 Domain Path: /lang/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+, 3.3+.
+Compatible with WordPress 2.8 through 3.4+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -22,19 +24,21 @@ Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+, 3.3+.
 */
 
 /*
-Copyright (c) 2009-2012 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2012 by Scott Reilly (aka coffee2code)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
-modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the 
-Software is furnished to do so, subject to the following conditions:
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation; either version 2
+	of the License, or (at your option) any later version.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 if ( is_admin() && ! class_exists( 'c2c_AdminExpertMode' ) ) :
@@ -42,7 +46,6 @@ if ( is_admin() && ! class_exists( 'c2c_AdminExpertMode' ) ) :
 class c2c_AdminExpertMode {
 	private static $admin_options_name = 'c2c_admin_expert_mode';
 	private static $field_name         = 'admin_expert_mode';
-	private static $textdomain         = 'admin-expert-mode';
 	private static $prompt             = '';
 	private static $help_text          = '';
 	private static $config             = array();
@@ -56,7 +59,7 @@ class c2c_AdminExpertMode {
 	 * @since 1.8
 	 */
 	public static function version() {
-		return '1.8';
+		return '1.8.1';
 	}
 
 	/**
@@ -71,10 +74,10 @@ class c2c_AdminExpertMode {
 	 * Perform initialization
 	 */
 	public static function do_init() {
-		load_plugin_textdomain( self::$textdomain, false, basename( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'lang' );
+		load_plugin_textdomain( 'admin-expert-mode', false, basename( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'lang' );
 
-		self::$prompt =    __( 'Expert mode', self::$textdomain );
-		self::$help_text = __( 'Enable expert mode (if you are familiar with WordPress and don\'t need the inline documentation in the admin).', self::$textdomain );
+		self::$prompt =    __( 'Expert mode', 'admin-expert-mode' );
+		self::$help_text = __( 'Enable expert mode (if you are familiar with WordPress and don\'t need the inline documentation in the admin).', 'admin-expert-mode' );
 
 		add_action( 'admin_notices',         array( __CLASS__, 'display_activation_notice' ) );
 		add_action( 'load-profile.php',      array( __CLASS__, 'register_profile_page_hooks' ) );
@@ -109,9 +112,9 @@ class c2c_AdminExpertMode {
 	public static function display_activation_notice() {
 		if ( get_transient( 'aem_activated' ) ) {
 			if ( self::is_admin_expert_mode_active() )
-				$msg = __( 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="%s" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)', self::$textdomain );
+				$msg = __( 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="%s" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)', 'admin-expert-mode' );
 			else
-				$msg = __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', self::$textdomain );
+				$msg = __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', 'admin-expert-mode' );
 			$msg = sprintf( $msg, admin_url( 'profile.php' ) );
 			echo "<div id='message' class='updated fade'><p>$msg</p></div>";
 		}
@@ -199,5 +202,3 @@ class c2c_AdminExpertMode {
 c2c_AdminExpertMode::init();
 
 endif; // end if !class_exists()
-
-?>

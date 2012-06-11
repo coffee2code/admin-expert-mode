@@ -2,10 +2,12 @@
 Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: admin, expert, help, remove inline documentation, coffee2code
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.3
-Stable tag: 1.8
-Version: 1.8
+Tested up to: 3.4
+Stable tag: 1.8.1
+Version: 1.8.1
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -137,6 +139,13 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 1.8.1 =
+* Use string instead of variable to specify translation textdomain
+* Re-license as GPLv2 or later (from X11)
+* Add 'License' and 'License URI' header tags to readme.txt and plugin file
+* Remove ending PHP close tag
+* Note compatibility through WP 3.4+
+
 = 1.8 =
 * Change activation admin notice to recognize if settings is already true for user and say so
 * Hook 'admin_enqueue_scripts' action instead of 'admin_head' to output CSS
@@ -210,6 +219,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+Trivial update: noted compatibility through WP 3.4+; explicitly stated license
 
 = 1.8 =
 Recommended update. Highlights: various code improvements; enqueue CSS; noted compatibility through WP 3.3+
