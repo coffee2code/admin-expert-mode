@@ -5,9 +5,9 @@ Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.4
-Stable tag: 1.8.1
-Version: 1.8.1
+Tested up to: 3.5
+Stable tag: 1.9
+Version: 1.9
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -16,9 +16,9 @@ Allow users with access to the administration section to hide inline documentati
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
-WordPress 2.7 introduced a variety inline documentation that provide explanations for various feature and input fields (i.e. things like explanations of excerpts, trackbacks, custom fields, page parents, etc).  These are great for newcomers to WordPress.  For those sufficiently familiar with WordPress, these bits of text are no longer necessary and merely provide visual noise.  This plugin gets rid of those descriptive texts.
+WordPress has long provided inline documentation throughout the administrative interface that provide explanations for various features and input fields. This includes an explanations of excerpts, trackbacks, custom fields, page parents, etc. These are great for newcomers to WordPress, but for those sufficient familiarity these bits of text are no longer necessary and merely provide visual noise.  This plugin gets rid of those descriptive texts.
 
-This plugin's behavior is made available as a per-user profile option.  Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
+The plugin's behavior is made available as a per-user profile option.  Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
 Specifically, this plugin removes:
 
@@ -70,7 +70,10 @@ Specifically, this plugin removes:
     * Help text for "Popular Tags"
 
 * Tools
-    * Description paragraph for "Press This"
+    * Description paragraphs for "Press This"
+
+* Tools - Export
+    * Description paragraphs for "Export"
 
 * Settings - General
     * Extra help text after input fields for "Tagline", "Site address (URL)", "E-mail address", "Timezone"
@@ -79,7 +82,7 @@ Specifically, this plugin removes:
     * Help text about "Common Settings"
     * Help text about "Optional"
 
-NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data.
+NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data. In a few cases, descriptive text is left in tact when it of enough importance to warrant retention, or the markup structure does not facilitate easy removal.
 
 Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
 
@@ -103,7 +106,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 
 The plugin is further customizable via two filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
 
-= c2c_admin_expert_mode =
+= c2c_admin_expert_mode (filter) =
 
 The 'c2c_admin_expert_mode' filter allows you to dynamically determine whether the admin expert mode should be active.
 
@@ -122,7 +125,7 @@ function aem_never_let_bob_activate( $is_active, $user_login ) {
 	return $is_active; // Otherwise, preserve activation status for user
 } ?>`
 
-= c2c_admin_expert_mode_default =
+= c2c_admin_expert_mode_default (filter) =
 
 The 'c2c_admin_expert_mode_default' filter allows you to specify whether admin expert mode should be active for users by default or not.  This filter only applies to users who visit the admin for the first time after the plugin is activated.  Once a user visits the admin, their setting gets set to the default state and will no longer be affected by this filter.  If you wish to affect the setting for existing users, use the 'c2c_admin_expert_mode' filter instead.
 
@@ -138,6 +141,20 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Changelog ==
+
+= 1.9 =
+* Update hiding of 'Tools - Export' page help text for WP 3.5
+* Update hiding of 'Tools' page help text for WP 3.5
+* Fix to hide 'Settings - Permalinks' page help text
+* Remove `register_profile_page_hooks()`
+* Add $user_id to `maybe_save_options()` and remove need to check $_POST
+* Add check to prevent execution of code if file is directly accessed
+* Modified documentation
+* Note compatibility through WP 3.5+
+* Update copyright date (2013)
+* Minor code reformatting (spacing)
+* Create repo's assets directory
+* Move screenshots into repo's assets directory
 
 = 1.8.1 =
 * Use string instead of variable to specify translation textdomain
@@ -219,6 +236,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 1.9 =
+Minor update: removed newly added and changed help text; noted compatibility with WP 3.5+
 
 = 1.8.1 =
 Trivial update: noted compatibility through WP 3.4+; explicitly stated license
