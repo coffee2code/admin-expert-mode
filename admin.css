@@ -8,11 +8,13 @@
 .tools-php p.description,
 .tools-php .tool-box > p,
 .options-general-php .description,
-.options-permalink-php form p,
+.options-permalink-php form p:first-of-type,
 .export-php .wrap > p,
 .post-body-plain,
 #icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
+.plugin-install-php #wpbody-content .wrap p:first-of-type,
 #addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display: none; }
 /* Re-show some things that got hidden */
+.wrap p.submit,
 .tools-php .tool-box p.pressthis,
 .tools-php .tool-box:last-child > p { display: block; }
