@@ -68,7 +68,7 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
-	 * Constructor
+	 * Initializer
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'do_init' ) );
