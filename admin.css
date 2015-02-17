@@ -1,9 +1,11 @@
+.update-core-php #wpbody-content .wrap > p,.update-core-php #wpbody-content li > p,
 #postexcerpt .inside > p, #trackbacksdiv .inside > p:last-child, #postcustom .inside > p,
 #pagecustomdiv .inside > p, #pagecommentstatusdiv .inside > p:last-child,
-#pageparentdiv .inside > select + p, #pageparentdiv .inside > p:last-child,
+#pageparentdiv .inside > p:last-child,
 #namediv .inside > p, #descriptiondiv .inside > p, #linktargetdiv .inside > p,
 #linkxfndiv .inside > p, #addressdiv .inside > p,
 #current-widgets-head #sidebar-info p:last-child,
+.drag-instructions,
 #upload-form label,
 .tools-php p.description,
 .tools-php .tool-box > p,
@@ -15,6 +17,7 @@
 .plugin-install-php #wpbody-content .wrap p:first-of-type,
 #addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display: none; }
 /* Re-show some things that got hidden */
+.update-core-php #wpbody-content .wrap > p:first-of-type,
 .wrap p.submit,
 .tools-php .tool-box p.pressthis,
 .tools-php .tool-box:last-child > p { display: block; }

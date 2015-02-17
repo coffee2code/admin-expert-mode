@@ -5,8 +5,8 @@ Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.8
-Stable tag: 2.0
+Tested up to: 4.1
+Stable tag: 2.1
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -80,7 +80,7 @@ Specifically, this plugin removes:
 
 NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data. In a few cases, descriptive text is left intact when it is of enough importance to warrant retention, or the markup structure does not facilitate easy removal.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Plugin Directory Page](http://wordpress.org/plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Plugin Directory Page](https://wordpress.org/plugins/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -137,6 +137,19 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Changelog ==
+
+= 2.1 (2015-02-17) =
+* Reformat plugin header
+* Update hiding of a few existing help text
+* Use __DIR__ instead of `dirname(__FILE__)`
+* Note compatibility through WP 4.1+
+* Minor code reformatting (bracing, spacing)
+* Various inline code documentation improvements (spacing, punctuation)
+* Change documentation links to wp.org to be https
+* Update screenshots
+* Update copyright date (2015)
+* Add plugin icon
+* Update .pot
 
 = 2.0 (2013-12-22) =
 * Update hiding of 'Install Plugins' page help text for WP 3.8
@@ -242,6 +255,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 2.1 =
+Minor update: updated hiding of a few existing help text; noted compatibility through WP 4.1+; updated copyright date (2015); added plugin icon
 
 = 2.0 =
 Minor update: updated hiding of a few existing help text; noted compatibility with WP 3.8+
