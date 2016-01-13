@@ -5,8 +5,8 @@ Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 2.1
+Tested up to: 4.4
+Stable tag: 2.2
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
 
@@ -67,6 +67,9 @@ Specifically, this plugin removes:
 
 * Tools
     * Description paragraphs for "Press This"
+
+* Tools - Import
+    * Description paragraph for "Import"
 
 * Tools - Export
     * Description paragraphs for "Export"
@@ -137,6 +140,17 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Changelog ==
+
+= 2.2 (2016-01-13) =
+* Add: Hide descriptive paragraph for Tools - Import.
+* Change: Hide Press This help text on latest WP.
+* Change: Add support for language packs:
+    * Don't load textdomain from file.
+    * Remove .pot file and /lang subdirectory.
+* Change: Note compatibility through WP 4.4+.
+* Change: Explicitly declare methods in unit tests as public.
+* Change: Update copyright date (2016).
+* Add: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
 
 = 2.1 (2015-02-17) =
 * Reformat plugin header
@@ -255,6 +269,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 2.2 =
+Minor update: hide a few more recently added/changed help texts, adjustments to utilize language packs, minor unit test tweaks, noted compatibility through WP 4.4+, and updated copyright date
 
 = 2.1 =
 Minor update: updated hiding of a few existing help text; noted compatibility through WP 4.1+; updated copyright date (2015); added plugin icon

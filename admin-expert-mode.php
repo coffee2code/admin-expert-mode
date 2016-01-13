@@ -1,17 +1,16 @@
 <?php
 /**
  * Plugin Name: Admin Expert Mode
- * Version:     2.1
+ * Version:     2.2
  * Plugin URI:  http://coffee2code.com/wp-plugins/admin-expert-mode/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
  * Text Domain: admin-expert-mode
- * Domain Path: /lang/
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
  *
- * Compatible with WordPress 2.8 through 4.1+.
+ * Compatible with WordPress 2.8 through 4.4+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -21,12 +20,12 @@
  * 	* Permit admins to see and edit the value of the setting for other users
  *
  * @package Admin_Expert_Mode
- * @author Scott Reilly
- * @version 2.1
+ * @author  Scott Reilly
+ * @version 2.2
 */
 
 /*
-	Copyright (c) 2009-2015 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2016 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -63,7 +62,7 @@ class c2c_AdminExpertMode {
 	 * @since 1.8
 	 */
 	public static function version() {
-		return '2.1';
+		return '2.2';
 	}
 
 	/**
@@ -78,9 +77,8 @@ class c2c_AdminExpertMode {
 	 * Performs initialization.
 	 */
 	public static function do_init() {
-
 		// Load textdomain.
-		load_plugin_textdomain( 'admin-expert-mode', false, basename( __DIR__ ) . DIRECTORY_SEPARATOR . 'lang' );
+		load_plugin_textdomain( 'admin-expert-mode' );
 
 		// Set translatable strings.
 		self::$prompt =    __( 'Expert mode', 'admin-expert-mode' );
@@ -172,7 +170,7 @@ class c2c_AdminExpertMode {
 	 * @return array The plugin's settings
 	 */
 	public static function get_options() {
-		if ( ! empty( self::$options ) ) {
+		if ( self::$options ) {
 			return self::$options;
 		}
 
