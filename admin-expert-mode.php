@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Admin Expert Mode
- * Version:     2.2
+ * Version:     2.3
  * Plugin URI:  http://coffee2code.com/wp-plugins/admin-expert-mode/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
  *
- * Compatible with WordPress 2.8 through 4.4+.
+ * Compatible with WordPress 2.8 through 4.5+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -21,7 +21,7 @@
  *
  * @package Admin_Expert_Mode
  * @author  Scott Reilly
- * @version 2.2
+ * @version 2.3
 */
 
 /*
@@ -62,7 +62,7 @@ class c2c_AdminExpertMode {
 	 * @since 1.8
 	 */
 	public static function version() {
-		return '2.2';
+		return '2.3';
 	}
 
 	/**
