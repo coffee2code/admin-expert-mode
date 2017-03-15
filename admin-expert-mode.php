@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
  *
- * Compatible with WordPress 2.8 through 4.5+.
+ * Compatible with WordPress 2.8 through 4.7+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
