@@ -142,6 +142,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* Change: Use `sprintf()` to format output markup rather than concatenating strings and variables
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 

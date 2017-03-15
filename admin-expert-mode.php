@@ -160,8 +160,17 @@ class c2c_AdminExpertMode {
 		$checked = $options[ self::$field_name ] ? ' checked="checked"' : '';
 
 		echo '<table class="form-table"><tr><th scope="row">' . self::$prompt . '</th>';
-		echo '<td><label for="' . self::$field_name . '"><input type="checkbox" value="true" id="' . self::$field_name . '" name="' . self::$field_name . "\"{$checked}/>\n";
-		echo self::$help_text . '</label></td></tr></table>';
+		echo '<td>';
+		printf(
+			'<label for="%s"><input type="checkbox" id="%s" name="%s" value="%s"%s>' . "\n",
+			self::$field_name,
+			self::$field_name,
+			self::$field_name,
+			'true',
+			$checked
+		);
+		echo self::$help_text;
+		echo '</label></td></tr></table>';
 	}
 
 	/**
