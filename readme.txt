@@ -141,6 +141,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= () =
+* Change: Update copyright date (2017)
+
 = 2.3 (2016-04-03) =
 * New: Add support for trimming new term.php page.
 * New: Add LICENSE file.
