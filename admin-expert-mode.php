@@ -166,7 +166,7 @@ class c2c_AdminExpertMode {
 			self::$field_name,
 			self::$field_name,
 			self::$field_name,
-			'true',
+			'1',
 			$checked
 		);
 		echo self::$help_text;

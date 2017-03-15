@@ -143,6 +143,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 = () =
 * Change: Use `sprintf()` to format output markup rather than concatenating strings and variables
+* Change: Set the value of the checkbox to '1' instead of 'true'
 * Change: Note compatibility through WP 4.7+
 * Change: Update copyright date (2017)
 
