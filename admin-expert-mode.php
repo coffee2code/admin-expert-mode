@@ -163,9 +163,9 @@ class c2c_AdminExpertMode {
 		echo '<td>';
 		printf(
 			'<label for="%s"><input type="checkbox" id="%s" name="%s" value="%s"%s>' . "\n",
-			self::$field_name,
-			self::$field_name,
-			self::$field_name,
+			esc_attr( self::$field_name ),
+			esc_attr( self::$field_name ),
+			esc_attr( self::$field_name ),
 			'1',
 			$checked
 		);
