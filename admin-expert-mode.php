@@ -157,7 +157,6 @@ class c2c_AdminExpertMode {
 	 */
 	public static function show_option( $user ) {
 		$options = self::get_options();
-		$checked = $options[ self::$field_name ] ? ' checked="checked"' : '';
 
 		echo '<table class="form-table"><tr><th scope="row">' . self::$prompt . '</th>';
 		echo '<td>';
@@ -167,7 +166,7 @@ class c2c_AdminExpertMode {
 			esc_attr( self::$field_name ),
 			esc_attr( self::$field_name ),
 			'1',
-			$checked
+			checked( (bool) $options[ self::$field_name ], true, false )
 		);
 		echo self::$help_text;
 		echo '</label></td></tr></table>';
