@@ -190,9 +190,12 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
-	 * Saves the user setting.
+	 * Saves value of checkbox to allow user to opt into receiving
+	 * notifications for all comments.
 	 *
-	 * @param  $user_id The user ID.
+	 * @access public
+	 *
+	 * @param  int  $user_id The user ID.
 	 */
 	public static function maybe_save_options( $user_id ) {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
@@ -200,8 +203,14 @@ class c2c_AdminExpertMode {
 		}
 
 		$options = self::get_options();
-		$options[ self::$field_name ] = $_POST[ self::$field_name ] ? 1 : 0;
-		update_user_option( $user->ID, self::$admin_options_name, $options );
+		$options[ self::$field_name ] = ! empty( $_POST[ self::$field_name ] );
+
+		if ( empty( $_POST[ self::$field_name ] ) ) {
+			delete_user_option( $user_id, self::$admin_options_name );
+		} else {
+			update_user_option( $user_id, self::$admin_options_name, $options );
+		}
+
 		self::$options = $options;
 	}
 
