@@ -195,7 +195,10 @@ class c2c_AdminExpertMode {
 	 * @param  $user_id The user ID.
 	 */
 	public static function maybe_save_options( $user_id ) {
-		$user = get_userdata( $user_id );
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			return false;
+		}
+
 		$options = self::get_options();
 		$options[ self::$field_name ] = $_POST[ self::$field_name ] ? 1 : 0;
 		update_user_option( $user->ID, self::$admin_options_name, $options );
