@@ -16,13 +16,17 @@
  * =>> Also, visit the plugin's homepage for additional information and updates.
  * =>> Or visit: https://wordpress.org/plugins/admin-expert-mode/
  *
- * TODO:
- * 	* Permit admins to see and edit the value of the setting for other users
- *
  * @package Admin_Expert_Mode
  * @author  Scott Reilly
  * @version 2.3
 */
+
+/*
+ * TODO:
+ * - Permit admins to see and edit the value of the setting for other users
+ * - Add inline documentation for class variables
+ *
+ */
 
 /*
 	Copyright (c) 2009-2018 by Scott Reilly (aka coffee2code)
