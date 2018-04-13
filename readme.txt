@@ -105,7 +105,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 
 The plugin is further customizable via two filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
 
-= c2c_admin_expert_mode (filter) =
+**c2c_admin_expert_mode (filter)**
 
 The 'c2c_admin_expert_mode' filter allows you to dynamically determine whether the admin expert mode should be active.
 
@@ -124,7 +124,7 @@ function aem_never_let_bob_activate( $is_active, $user_login ) {
 	return $is_active; // Otherwise, preserve activation status for user
 } ?>`
 
-= c2c_admin_expert_mode_default (filter) =
+**c2c_admin_expert_mode_default (filter)**
 
 The 'c2c_admin_expert_mode_default' filter allows you to specify whether admin expert mode should be active for users by default or not. This filter only applies to users who visit the admin for the first time after the plugin is activated. Once a user visits the admin, their setting gets set to the default state and will no longer be affected by this filter. If you wish to affect the setting for existing users, use the 'c2c_admin_expert_mode' filter instead.
 
@@ -150,6 +150,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Use `checked()` helper function rather than reinventing it
 * Change: Cast value returned from 'c2c_admin_expert_mode_default' filter as bool
 * Change: Add GitHub link to readme
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 * Change: Update installation instruction to prefer built-in installer over .zip file
