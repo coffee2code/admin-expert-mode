@@ -13,7 +13,7 @@ Allow users with access to the administration section to hide inline documentati
 
 == Description ==
 
-WordPress has long provided inline documentation throughout the administrative interface that provide explanations for various features and input fields. This includes an explanations of excerpts, trackbacks, custom fields, page parents, etc. These are great for newcomers to WordPress, but for those sufficient familiarity these bits of text are no longer necessary and merely provide visual noise. This plugin gets rid of those descriptive texts.
+WordPress has long provided inline documentation throughout the administrative interface that provide explanations for various features and input fields. This includes an explanations of excerpts, trackbacks, custom fields, page parents, etc. These are great for newcomers to WordPress, but for those with sufficient familiarity these bits of text are no longer necessary and merely provide visual noise. This plugin gets rid of those descriptive texts.
 
 The plugin's behavior is made available as a per-user profile option. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
@@ -89,8 +89,8 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 == Installation ==
 
 1. Install via the built-in WordPress plugin installer. Or download and unzip `admin-expert-mode.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
-1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the checkbox 'Expert mode', and then pressing the 'Update Profile' button.
 
 
 == Screenshots ==
@@ -103,7 +103,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 
 == Filters ==
 
-The plugin is further customizable via two filters. Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
+The plugin is further customizable via two filters. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
 
 **c2c_admin_expert_mode (filter)**
 
@@ -116,13 +116,16 @@ Arguments:
 
 Example:
 
-`<?php add_filter( 'c2c_admin_expert_mode', 'aem_never_let_bob_activate', 10, 2 );
+`
+<?php
 // Never let user 'bob' activate admin expert mode
 function aem_never_let_bob_activate( $is_active, $user_login ) {
 	if ( 'bob' == $user_login )
 		return false;
 	return $is_active; // Otherwise, preserve activation status for user
-} ?>`
+}
+add_filter( 'c2c_admin_expert_mode', 'aem_never_let_bob_activate', 10, 2 );?>
+`
 
 **c2c_admin_expert_mode_default (filter)**
 
@@ -132,11 +135,13 @@ Arguments:
 
 * $is_active (bool): Boolean indicating if admin expert mode is active by default (default is false)
 
-Example (only valid in WP 3.0+):
+Example:
 
-`<?php // Enable admin expert mode for all users by default
+`
+<?php // Enable admin expert mode for all users by default
 add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
-?>`
+?>
+`
 
 
 == Changelog ==
@@ -149,6 +154,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Set the value of the checkbox to '1' instead of 'true'
 * Change: Use `checked()` helper function rather than reinventing it
 * Change: Cast value returned from 'c2c_admin_expert_mode_default' filter as bool
+* Change: Tweak readme.txt (minor content changes, spacing)
 * Change: Add GitHub link to readme
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
