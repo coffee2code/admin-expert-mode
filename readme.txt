@@ -88,7 +88,7 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 
 == Installation ==
 
-1. Unzip `admin-expert-mode.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
+1. Install via the built-in WordPress plugin installer. Or download and unzip `admin-expert-mode.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Each user who wishes to enable expert mode for themselves must do so individually by going into their profile, checking the field 'Expert mode', and then pressing the 'Update Profile' button.
 
@@ -152,6 +152,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
+* Change: Update installation instruction to prefer built-in installer over .zip file
 
 = 2.3 (2016-04-03) =
 * New: Add support for trimming new term.php page.
