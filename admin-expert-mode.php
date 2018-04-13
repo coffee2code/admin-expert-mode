@@ -187,7 +187,7 @@ class c2c_AdminExpertMode {
 		}
 
 		$existing_options = get_user_option( self::$admin_options_name );
-		$default = apply_filters( 'c2c_admin_expert_mode_default', false );
+		$default          = (bool) apply_filters( 'c2c_admin_expert_mode_default', false );
 		self::$options = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
 
 		return self::$options;

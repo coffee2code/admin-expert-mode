@@ -148,6 +148,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: (Hardening) Escape the setting name before use in attributes
 * Change: Set the value of the checkbox to '1' instead of 'true'
 * Change: Use `checked()` helper function rather than reinventing it
+* Change: Cast value returned from 'c2c_admin_expert_mode_default' filter as bool
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
