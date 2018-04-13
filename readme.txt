@@ -5,7 +5,7 @@ Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 4.7
+Tested up to: 4.9
 Stable tag: 2.3
 
 Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
@@ -148,7 +148,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: (Hardening) Escape the setting name before use in attributes
 * Change: Set the value of the checkbox to '1' instead of 'true'
 * Change: Use `checked()` helper function rather than reinventing it
-* Change: Note compatibility through WP 4.7+
+* Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
 = 2.3 (2016-04-03) =
