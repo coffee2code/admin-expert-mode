@@ -149,7 +149,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Set the value of the checkbox to '1' instead of 'true'
 * Change: Use `checked()` helper function rather than reinventing it
 * Change: Note compatibility through WP 4.7+
-* Change: Update copyright date (2017)
+* Change: Update copyright date (2018)
 
 = 2.3 (2016-04-03) =
 * New: Add support for trimming new term.php page.
