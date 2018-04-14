@@ -57,7 +57,6 @@ class c2c_AdminExpertMode {
 	private static $help_text          = '';
 	private static $config             = array();
 	private static $options            = array();
-	private static $activating         = false;
 	private static $is_active          = false; // Has admin expert mode been determined to be active?
 
 	/**
