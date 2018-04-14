@@ -147,6 +147,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* New: Add README.md
 * Change: Delete the user option if the checkbox wasn't checked
 * Change: Use `sprintf()` to format output markup rather than concatenating strings and variables
 * Change: (Hardening) Check that current user is able to edit the user being edited before saving the user option
