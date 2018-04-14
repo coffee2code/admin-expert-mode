@@ -17,6 +17,7 @@
 .post-body-plain,
 #icon-plugins + h2 + p, #currently-active + form + p, #recent-plugins + p, #inactive-plugins + form + h2 + p + p + p,
 .plugin-install-php #wpbody-content .wrap p:first-of-type,
+.user-description-wrap .description,
 #addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display: none; }
 /* Re-show some things that got hidden */
 .update-core-php #wpbody-content .wrap > p:first-of-type,
