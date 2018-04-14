@@ -8,7 +8,7 @@ Requires at least: 2.8
 Tested up to: 4.9
 Stable tag: 2.3
 
-Allow users with access to the administration section to hide inline documentation and help text, which generally target beginning users.
+Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
 
 == Description ==
@@ -156,6 +156,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Use `checked()` helper function rather than reinventing it
 * Change: Cast value returned from 'c2c_admin_expert_mode_default' filter as bool
 * Change: Tweak readme.txt (minor content changes, spacing)
+* Change: Tweak plugin description
 * Change: Add GitHub link to readme
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Note compatibility through WP 4.9+
