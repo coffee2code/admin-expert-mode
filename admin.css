@@ -19,9 +19,12 @@
 .plugin-install-php #wpbody-content .wrap p:first-of-type,
 .user-description-wrap .description,
 .user-sessions-wrap .description,
+.privacy-php .wrap p,
 #addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display: none; }
 /* Re-show some things that got hidden */
 .update-core-php #wpbody-content .wrap > p:first-of-type,
 .wrap p.submit,
+.privacy-php .wrap p.tools-privacy-edit,
+.privacy-php .wrap p.tools-privacy-edit ~ p,
 .tools-php .tool-box p.pressthis,
 .tools-php .tool-box:last-child > p { display: block; }

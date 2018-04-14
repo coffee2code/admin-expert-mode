@@ -81,6 +81,9 @@ Specifically, this plugin removes:
     * Help text about "Common Settings"
     * Help text about "Optional"
 
+* Settings - Privacy
+    * Paragraphs of text describing the Privacy Policy page
+
 NOTE: This plugin does NOT remove input field labels or section headers, nor anything containing actual data. In a few cases, descriptive text is left intact when it is of enough importance to warrant retention, or the markup structure does not facilitate easy removal.
 
 Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) | [Plugin Directory Page](https://wordpress.org/plugins/admin-expert-mode/) | [GitHub](https://github.com/coffee2code/admin-expert-mode/) | [Author Homepage](http://coffee2code.com)
@@ -147,6 +150,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* New: Hide descriptive paragraphs for "Privacy Settings" page
 * New: Hide description for "Biographical Info" field in user profile
 * New: Hide description for "Sessions" field in user profile
 * New: Add README.md
