@@ -108,6 +108,14 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/admin-expert-mode/) |
 4. A screenshot of the form on the 'Categories' admin page *after* this plugin is activated.
 5. A screenshot of the form on the 'Categories' admin page as they appear in a standard WP 3.3 installation. See the difference?
 
+
+== Frequently Asked Questions ==
+
+= Can I view an admin page with admin expert mode turned off without turning the feature off for my account or disabling the plugin entirely? =
+
+Yes. Use the 'disable-admin-expert-mode' query parameter with a value of '1' to disable admin expert mode for the loaded page. This would yield a URL, for example, of `https://example.com/wp-admin/options-general.php?disable-admin-expert-mode=1`. If the URL already has query parameters specified (you'll see a "?" in the URL), then you have to add the new query parameter as an additional one joined with "&", e.g. `https://example.com/wp-admin/post-new.php?post_type=page&disable-admin-expert-mode=1`.
+
+
 == Filters ==
 
 The plugin is further customizable via two filters. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
@@ -154,6 +162,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
 * New: Hide descriptive paragraphs for "Privacy Settings" page
 * New: Hide description for "Biographical Info" field in user profile
 * New: Hide description for "Sessions" field in user profile

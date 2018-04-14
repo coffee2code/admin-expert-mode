@@ -60,6 +60,15 @@ class c2c_AdminExpertMode {
 	private static $is_active          = false; // Has admin expert mode been determined to be active?
 
 	/**
+	 * Name of the query key used for disabling expert mode for current page.
+	 *
+	 * @since 2.4
+	 * @var string
+	 */
+	private static $disable_query_key  = 'disable-admin-expert-mode';
+
+
+	/**
 	 * Returns version of the plugin.
 	 *
 	 * @since 1.8
@@ -128,6 +137,11 @@ class c2c_AdminExpertMode {
 	 */
 	public static function is_admin_expert_mode_active() {
 		$options = self::get_options();
+
+		if ( ! empty( $_GET[ self::$disable_query_key ] ) ) {
+			return false;
+		}
+
 		if ( self::$is_active || apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) ) ) {
 			self::$is_active = true;
 		}
