@@ -65,6 +65,10 @@ Specifically, this plugin removes:
     * Help text for search field
     * Help text for "Popular Tags"
 
+* Users - Your Profile
+    * Help text for "Biographical Info"
+    * Help text for "Sessions"
+
 * Tools
     * Description paragraphs for "Press This"
 
