@@ -79,7 +79,7 @@ Specifically, this plugin removes:
     * Description paragraphs for "Export"
 
 * Settings - General
-    * Extra help text after input fields for "Tagline", "Site address (URL)", "E-mail address", "Timezone"
+    * Extra help text after input fields for "Tagline", "Site Address (URL)", "Email Address", "Timezone"
 
 * Settings - Permalinks
     * Help text about "Common Settings"
