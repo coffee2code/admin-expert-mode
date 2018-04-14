@@ -95,6 +95,7 @@ class c2c_AdminExpertMode {
 		// Set translatable strings.
 		self::$prompt =    __( 'Expert mode', 'admin-expert-mode' );
 		self::$help_text = __( "Enable expert mode (if you are familiar with WordPress and don't need the inline documentation in the admin).", 'admin-expert-mode' );
+
 		// Register and enqueue styles for admin page.
 		self::register_styles();
 
@@ -201,7 +202,7 @@ class c2c_AdminExpertMode {
 
 		$existing_options = get_user_option( self::$admin_options_name );
 		$default          = (bool) apply_filters( 'c2c_admin_expert_mode_default', false );
-		self::$options = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
+		self::$options    = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
 
 		return self::$options;
 	}
