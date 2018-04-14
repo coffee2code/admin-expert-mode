@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 2.3
+Stable tag: 2.4
 
 Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -161,7 +161,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
-= () =
+= 2.4 (2018-04-13) =
 * New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
 * New: Hide descriptive paragraphs for "Privacy Settings" page
 * New: Hide description for "Biographical Info" field in user profile
@@ -316,6 +316,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Upgrade Notice ==
+
+= 2.4 =
+Minor update: added support for query arg to disable expert mode on a given page; updated hiding of newly added help text, added README.md, noted compatibility through WP 4.9+, updated copyright date (2018), and more.
 
 = 2.3 =
 Minor update: updated hiding of help text on the new term.php page, noted compatibility through WP 4.5+, added LICENSE file

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Admin Expert Mode
- * Version:     2.3
+ * Version:     2.4
  * Plugin URI:  http://coffee2code.com/wp-plugins/admin-expert-mode/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,8 +18,8 @@
  *
  * @package Admin_Expert_Mode
  * @author  Scott Reilly
- * @version 2.3
-*/
+ * @version 2.4
+ */
 
 /*
  * TODO:
@@ -74,7 +74,7 @@ class c2c_AdminExpertMode {
 	 * @since 1.8
 	 */
 	public static function version() {
-		return '2.3';
+		return '2.4';
 	}
 
 	/**
