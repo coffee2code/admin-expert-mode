@@ -165,6 +165,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Note compatibility through WP 5.1+
 * Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
 
 = 2.4 (2018-04-13) =
 * New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
