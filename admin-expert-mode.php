@@ -234,6 +234,6 @@ class c2c_AdminExpertMode {
 
 } // end c2c_AdminExpertMode
 
-c2c_AdminExpertMode::init();
+add_action( 'plugins_loaded', array( 'c2c_AdminExpertMode', 'init' ) );
 
 endif; // end if !class_exists()
