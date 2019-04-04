@@ -165,6 +165,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * Change: Merge `do_init()` into `init()`
 * Change: Cast return value of `c2c_admin_expert_mode` filter as boolean
+* Change: (Hardening) Escape output of user profile URL
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * New: Add inline documentation for hooks
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'

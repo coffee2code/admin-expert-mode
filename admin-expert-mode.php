@@ -118,7 +118,7 @@ class c2c_AdminExpertMode {
 			} else {
 				$msg = __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', 'admin-expert-mode' );
 			}
-			$msg = sprintf( $msg, admin_url( 'profile.php' ) );
+			$msg = sprintf( $msg, esc_url( admin_url( 'profile.php' ) ) );
 
 			echo "<div id='message' class='updated fade'><p>$msg</p></div>";
 		}
