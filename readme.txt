@@ -162,6 +162,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
 
 = 2.4 (2018-04-13) =
