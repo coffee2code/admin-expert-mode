@@ -81,14 +81,9 @@ class c2c_AdminExpertMode {
 	 * Initializer.
 	 */
 	public static function init() {
-		add_action( 'init', array( __CLASS__, 'do_init' ) );
+		// Fire off a function when the plugin gets activated.
 		register_activation_hook( __FILE__, array( __CLASS__, 'plugin_activated' ) );
-	}
 
-	/**
-	 * Performs initialization.
-	 */
-	public static function do_init() {
 		// Load textdomain.
 		load_plugin_textdomain( 'admin-expert-mode' );
 
@@ -97,7 +92,7 @@ class c2c_AdminExpertMode {
 		self::$help_text = __( "Enable expert mode (if you are familiar with WordPress and don't need the inline documentation in the admin).", 'admin-expert-mode' );
 
 		// Register and enqueue styles for admin page.
-		self::register_styles();
+		add_action( 'init',                     array( __CLASS__, 'register_styles'           ) );
 
 		// Register hooks.
 		add_action( 'admin_notices',            array( __CLASS__, 'display_activation_notice' ) );

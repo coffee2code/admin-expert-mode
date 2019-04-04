@@ -163,6 +163,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 = () =
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
+* Change: Merge `do_init()` into `init()`
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * Change: Note compatibility through WP 5.1+
 * Change: Update copyright date (2019)
