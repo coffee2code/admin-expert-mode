@@ -7,7 +7,7 @@
  * Author URI:  http://coffee2code.com/
  * Text Domain: admin-expert-mode
  * License:     GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Description: Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
  *
  * Compatible with WordPress 2.8 through 4.9+.

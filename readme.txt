@@ -3,7 +3,7 @@ Contributors: coffee2code
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522
 Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 4.9
 Stable tag: 2.4
@@ -160,6 +160,9 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 
 == Changelog ==
+
+= () =
+* Change: Update License URI to be HTTPS
 
 = 2.4 (2018-04-13) =
 * New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
