@@ -147,7 +147,7 @@ class c2c_AdminExpertMode {
 		 * @param bool   $is_active  Is admin expert mode currently active?
 		 * @param string $user_login Login of the current user.
 		 */
-		if ( self::$is_active || apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) ) ) {
+		if ( self::$is_active || (bool) apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) ) ) {
 			self::$is_active = true;
 		}
 
