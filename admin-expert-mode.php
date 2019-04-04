@@ -138,6 +138,15 @@ class c2c_AdminExpertMode {
 			return false;
 		}
 
+		/**
+		 * Filteres whether the admin expert mode should be active for the current
+		 * user.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param bool   $is_active  Is admin expert mode currently active?
+		 * @param string $user_login Login of the current user.
+		 */
 		if ( self::$is_active || apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) ) ) {
 			self::$is_active = true;
 		}
@@ -196,6 +205,13 @@ class c2c_AdminExpertMode {
 		}
 
 		$existing_options = get_user_option( self::$admin_options_name );
+		/**
+		 * Filteres whether the admin expert mode should be active by default.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param bool $is_active Is admin expert mode active by default? Default false.
+		 */
 		$default          = (bool) apply_filters( 'c2c_admin_expert_mode_default', false );
 		self::$options    = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
 
