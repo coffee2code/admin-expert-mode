@@ -163,6 +163,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 = () =
 * New: Permit admins to see and edit the value of the setting for other users
+* Change: Add user ID as an additional argument to the `c2c_admin_expert_mode_default` filter
 * Change: Allow `get_options()` to accept a user ID and memoize values by user ID
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * Change: Merge `do_init()` into `init()`
