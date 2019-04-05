@@ -222,7 +222,7 @@ class c2c_AdminExpertMode {
 		}
 
 		if ( ! empty( self::$options[ $user_id ] ) ) {
-			return self::$options[ $useR_id ];
+			return self::$options[ $user_id ];
 		}
 
 		$existing_options = get_user_option( self::$admin_options_name, $user_id );
