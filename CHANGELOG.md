@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.5 _(2019-04-04)_
+
+### Highlights:
+
+* This minor release primarily adds the ability for admin users to see and edit the setting within other users' profiles and notes compatilibity through WordPress v5.1+. All other changes were behind-the-scenes for the general improvement of the plugin and its documentation.
+
+### Details:
+
+* New: Permit admins to see and edit the value of the setting for other users
+* Change: Add user ID as an additional argument to the `c2c_admin_expert_mode_default` filter
+* Change: Allow `get_options()` to accept a user ID and memoize values by user ID
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
+* Change: Merge `do_init()` into `init()`
+* Change: Modify help text for checkbox
+* Change: Cast return value of `c2c_admin_expert_mode` filter as boolean
+* Change: (Hardening) Escape output of user profile URL
+* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
+* New: Add inline documentation for hooks
+* Change: Improve function docblocks by adding missing `@see`, `@access`, `@param`, and `@return` tags
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Note compatibility through WP 5.1+
+* Change: Update copyright date (2019)
+* Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
+
 ## 2.4 _(2018-04-13)_
 * New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
 * New: Hide descriptive paragraphs for "Privacy Settings" page

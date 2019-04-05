@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 5.1
-Stable tag: 2.4
+Stable tag: 2.5
 
 Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -161,7 +161,13 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
-= () =
+= 2.5 (2019-04-04) =
+Highlights:
+
+* This minor release primarily adds the ability for admin users to see and edit the setting within other users' profiles and notes compatilibity through WordPress v5.1+. All other changes were behind-the-scenes for the general improvement of the plugin and its documentation.
+
+Details:
+
 * New: Permit admins to see and edit the value of the setting for other users
 * Change: Add user ID as an additional argument to the `c2c_admin_expert_mode_default` filter
 * Change: Allow `get_options()` to accept a user ID and memoize values by user ID
@@ -210,6 +216,9 @@ _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/ad
 
 
 == Upgrade Notice ==
+
+= 2.5 =
+Minor update: permitted admins to see and edit the value of the setting for other users, tweaked plugin initialization, noted compatibility through WP 5.1+, updated copyright date (2019), more.
 
 = 2.4 =
 Minor update: added support for query arg to disable expert mode on a given page; updated hiding of newly added help text, added README.md, noted compatibility through WP 4.9+, updated copyright date (2018), and more.
