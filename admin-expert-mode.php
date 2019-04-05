@@ -71,6 +71,7 @@ class c2c_AdminExpertMode {
 	/**
 	 * Returns version of the plugin.
 	 *
+	 * @access public
 	 * @since 1.8
 	 */
 	public static function version() {
@@ -79,6 +80,9 @@ class c2c_AdminExpertMode {
 
 	/**
 	 * Initializer.
+	 *
+	 * @access public
+	 * @since 1.0.0
 	 */
 	public static function init() {
 		// Fire off a function when the plugin gets activated.
@@ -110,6 +114,9 @@ class c2c_AdminExpertMode {
 
 	/**
 	 * Set a temporary flag (transient) to indicate the plugin was just activated.
+	 *
+	 * @access public
+	 * @since 1.5.0
 	 */
 	public static function plugin_activated() {
 		set_transient( 'aem_activated', 'show', 10 );
@@ -117,6 +124,9 @@ class c2c_AdminExpertMode {
 
 	/**
 	 * Outputs activation notice.
+	 *
+	 * @access public
+	 * @since 1.0.0
 	 */
 	public static function display_activation_notice() {
 		if ( get_transient( 'aem_activated' ) ) {
@@ -137,6 +147,11 @@ class c2c_AdminExpertMode {
 	 * Takes the following into account in this order:
 	 * * Value of 'c2c_admin_expert_mode' filter, if true
 	 * * Value of the per-user setting
+	 *
+	 * @access public
+	 * @since 1.5.0
+	 *
+	 * @return bool True is admin expert mode is active, else false.
 	 */
 	public static function is_admin_expert_mode_active() {
 		$options = self::get_options();
@@ -164,6 +179,7 @@ class c2c_AdminExpertMode {
 	/**
 	 * Registers styles.
 	 *
+	 * @access public
 	 * @since 1.8
 	 */
 	public static function register_styles() {
@@ -173,6 +189,7 @@ class c2c_AdminExpertMode {
 	/**
 	 * Enqueues stylesheets if the user has admin expert mode activated.
 	 *
+	 * @access public
 	 * @since 1.8
 	 */
 	public static function enqueue_admin_css() {
@@ -183,6 +200,11 @@ class c2c_AdminExpertMode {
 
 	/**
 	 * Outputs the form input field for the admin expert mode setting checkbox.
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 *
+	 * @param WP_User $user The user whose options are being shown.
 	 */
 	public static function show_option( $user ) {
 		$current_user = wp_get_current_user();
@@ -212,6 +234,9 @@ class c2c_AdminExpertMode {
 
 	/**
 	 * Returns array of the plugin's settings.
+	 *
+	 * @access public
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID. Default is ID of current user.
 	 * @return array The plugin's settings
@@ -245,8 +270,9 @@ class c2c_AdminExpertMode {
 	 * notifications for all comments.
 	 *
 	 * @access public
+	 * @since 1.0.0
 	 *
-	 * @param  int  $user_id The user ID.
+	 * @param int  $user_id The user ID.
 	 */
 	public static function maybe_save_options( $user_id ) {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
