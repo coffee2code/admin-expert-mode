@@ -23,8 +23,8 @@
 
 /*
  * TODO:
- * - Permit admins to see and edit the value of the setting for other users
  * - Add inline documentation for class variables
+ * - Define custom caps for being able to edit setting for another user
  *
  */
 
@@ -94,10 +94,17 @@ class c2c_AdminExpertMode {
 		// Register and enqueue styles for admin page.
 		add_action( 'init',                     array( __CLASS__, 'register_styles'           ) );
 
-		// Register hooks.
+		// Display admin notice on same page load as plugin activation.
 		add_action( 'admin_notices',            array( __CLASS__, 'display_activation_notice' ) );
-		add_action( 'profile_personal_options', array( __CLASS__, 'show_option'               ) );
+
+		// Add the checkbox to user profiles.
+		add_action( 'personal_options',         array( __CLASS__, 'show_option'               ) );
+
+		// Save the user preference.
 		add_action( 'personal_options_update',  array( __CLASS__, 'maybe_save_options'        ) );
+		add_action( 'edit_user_profile_update', array( __CLASS__, 'maybe_save_options'        ) );
+
+		// Enqueue admin scripts and styles.
 		add_action( 'admin_enqueue_scripts',    array( __CLASS__, 'enqueue_admin_css'         ) );
 	}
 
@@ -178,9 +185,18 @@ class c2c_AdminExpertMode {
 	 * Outputs the form input field for the admin expert mode setting checkbox.
 	 */
 	public static function show_option( $user ) {
-		$options = self::get_options();
+		$current_user = wp_get_current_user();
+		$is_current_user_profile_page = ( $user->ID == $current_user->ID );
 
-		echo '<table class="form-table"><tr><th scope="row">' . self::$prompt . '</th>';
+		// Only show on current user's own profile, or other user profiles if current
+		// user has appropriate capabilities.
+		if ( ! $is_current_user_profile_page && ! current_user_can( 'edit_users' ) ) {
+			return;
+		}
+
+		$options = self::get_options( $user->ID );
+
+		echo '<tr><th scope="row">' . self::$prompt . '</th>';
 		echo '<td>';
 		printf(
 			'<label for="%s"><input type="checkbox" id="%s" name="%s" value="%s"%s>' . "\n",
@@ -191,7 +207,7 @@ class c2c_AdminExpertMode {
 			checked( (bool) $options[ self::$field_name ], true, false )
 		);
 		echo self::$help_text;
-		echo '</label></td></tr></table>';
+		echo '</label></td></tr>';
 	}
 
 	/**
