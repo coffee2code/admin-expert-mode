@@ -197,14 +197,19 @@ class c2c_AdminExpertMode {
 	/**
 	 * Returns array of the plugin's settings.
 	 *
+	 * @param int $user_id The user ID. Default is ID of current user.
 	 * @return array The plugin's settings
 	 */
-	public static function get_options() {
-		if ( self::$options ) {
-			return self::$options;
+	public static function get_options( $user_id = 0 ) {
+		if ( ! $user_id ) {
+			$user_id = wp_get_current_user()->ID;
 		}
 
-		$existing_options = get_user_option( self::$admin_options_name );
+		if ( ! empty( self::$options[ $user_id ] ) ) {
+			return self::$options[ $useR_id ];
+		}
+
+		$existing_options = get_user_option( self::$admin_options_name, $user_id );
 		/**
 		 * Filteres whether the admin expert mode should be active by default.
 		 *
@@ -213,9 +218,9 @@ class c2c_AdminExpertMode {
 		 * @param bool $is_active Is admin expert mode active by default? Default false.
 		 */
 		$default          = (bool) apply_filters( 'c2c_admin_expert_mode_default', false );
-		self::$options    = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
+		self::$options[ $user_id ] = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
 
-		return self::$options;
+		return self::$options[ $user_id ];
 	}
 
 	/**
@@ -231,7 +236,7 @@ class c2c_AdminExpertMode {
 			return false;
 		}
 
-		$options = self::get_options();
+		$options = self::get_options( $user_id );
 		$options[ self::$field_name ] = ! empty( $_POST[ self::$field_name ] );
 
 		if ( empty( $_POST[ self::$field_name ] ) ) {
@@ -240,7 +245,7 @@ class c2c_AdminExpertMode {
 			update_user_option( $user_id, self::$admin_options_name, $options );
 		}
 
-		self::$options = $options;
+		self::$options[ $user_id ] = $options;
 	}
 
 } // end c2c_AdminExpertMode

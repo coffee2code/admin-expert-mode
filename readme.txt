@@ -162,6 +162,7 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 == Changelog ==
 
 = () =
+* Change: Allow `get_options()` to accept a user ID and memoize values by user ID
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * Change: Merge `do_init()` into `init()`
 * Change: Cast return value of `c2c_admin_expert_mode` filter as boolean
