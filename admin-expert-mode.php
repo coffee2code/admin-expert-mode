@@ -143,7 +143,7 @@ class c2c_AdminExpertMode {
 		}
 
 		// Register and enqueue styles for admin page.
-		add_action( 'admin_init',                     array( __CLASS__, 'register_styles'           ) );
+		add_action( 'admin_init',               array( __CLASS__, 'register_styles'           ) );
 
 		// Display admin notice on same page load as plugin activation.
 		add_action( 'admin_notices',            array( __CLASS__, 'display_activation_notice' ) );
