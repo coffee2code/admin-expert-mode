@@ -51,13 +51,66 @@ defined( 'ABSPATH' ) or die();
 if ( ! class_exists( 'c2c_AdminExpertMode' ) ) :
 
 class c2c_AdminExpertMode {
+
+	/**
+	 * The name for the admin option.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $admin_options_name = 'c2c_admin_expert_mode';
+
+	/**
+	 * Name for the admin field.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $field_name         = 'admin_expert_mode';
+
+	/**
+	 * Translated prompt/label for the admin field.
+	 *
+	 * Note: This is set during `init()`.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $prompt             = '';
+
+	/**
+	 * Translated help text for the admin field.
+	 *
+	 * Note: This is set during `init()`.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $help_text          = '';
+
+	/**
+	 * Memoized plugin configuration.
+	 *
+	 * @access private
+	 * @var array
+	 */
 	private static $config             = array();
+
+	/**
+	 * Memoized plugin configuration.
+	 *
+	 * @access private
+	 * @var array
+	 */
 	private static $options            = array();
-	private static $is_active          = false; // Has admin expert mode been determined to be active?
+
+	/**
+	 * Is admin expert mode activate?
+	 *
+	 * @access private
+	 * @var bool
+	 */
+	private static $is_active          = false;
 
 	/**
 	 * Name of the query key used for disabling expert mode for current page.

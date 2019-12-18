@@ -4,6 +4,7 @@
 * New: Add unit testing
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Note compatibility through WP 5.3+
+* Change: Add inline documentation for class variables
 * Change: Add link to CHANGELOG.md in README.md
 * Change: Update copyright date (2020)
 
