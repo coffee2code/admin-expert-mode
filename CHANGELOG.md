@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.3+
+* Change: Add link to CHANGELOG.md in README.md
 * Change: Update copyright date (2020)
 
 ## 2.5 _(2019-04-04)_
