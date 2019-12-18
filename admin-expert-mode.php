@@ -94,14 +94,6 @@ class c2c_AdminExpertMode {
 	 * @access private
 	 * @var array
 	 */
-	private static $config             = array();
-
-	/**
-	 * Memoized plugin configuration.
-	 *
-	 * @access private
-	 * @var array
-	 */
 	private static $options            = array();
 
 	/**
