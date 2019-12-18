@@ -49,7 +49,7 @@
 
 defined( 'ABSPATH' ) or die();
 
-if ( is_admin() && ! class_exists( 'c2c_AdminExpertMode' ) ) :
+if ( ! class_exists( 'c2c_AdminExpertMode' ) ) :
 
 class c2c_AdminExpertMode {
 	private static $admin_options_name = 'c2c_admin_expert_mode';
@@ -89,15 +89,17 @@ class c2c_AdminExpertMode {
 		// Fire off a function when the plugin gets activated.
 		register_activation_hook( __FILE__, array( __CLASS__, 'plugin_activated' ) );
 
-		// Load textdomain.
-		load_plugin_textdomain( 'admin-expert-mode' );
+		if ( is_admin() ) {
+			// Load textdomain.
+			load_plugin_textdomain( 'admin-expert-mode' );
 
-		// Set translatable strings.
-		self::$prompt =    __( 'Expert mode', 'admin-expert-mode' );
-		self::$help_text = __( 'Enable expert mode (disables most of the onscreen documentation in the admin)', 'admin-expert-mode' );
+			// Set translatable strings.
+			self::$prompt =    __( 'Expert mode', 'admin-expert-mode' );
+			self::$help_text = __( 'Enable expert mode (disables most of the onscreen documentation in the admin)', 'admin-expert-mode' );
+		}
 
 		// Register and enqueue styles for admin page.
-		add_action( 'init',                     array( __CLASS__, 'register_styles'           ) );
+		add_action( 'admin_init',                     array( __CLASS__, 'register_styles'           ) );
 
 		// Display admin notice on same page load as plugin activation.
 		add_action( 'admin_notices',            array( __CLASS__, 'display_activation_notice' ) );
