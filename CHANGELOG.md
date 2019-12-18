@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add unit testing
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Note compatibility through WP 5.3+
 * Change: Add link to CHANGELOG.md in README.md

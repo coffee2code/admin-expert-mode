@@ -25,7 +25,6 @@
  * TODO:
  * - Add inline documentation for class variables
  * - Define custom caps for being able to edit setting for another user
- * - Add unit tests
  *
  */
 
