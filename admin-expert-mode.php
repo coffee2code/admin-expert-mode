@@ -300,7 +300,12 @@ class c2c_AdminExpertMode {
 		$user_setting_value = get_user_option( self::$admin_options_name, $user_id );
 
 		/**
-		 * Filteres whether the admin expert mode should be active by default.
+		 * Filters whether the admin expert mode should be active by default.
+		 *
+		 * Note: This only affects the default value and does not override what the
+		 * user has set themselves. To override the value of the user setting (and
+		 * thus have the final say in whether the mode is enabled or not, use the
+		 * `c2c_admin_expert_mode` filter.)
 		 *
 		 * @since 1.5.0
 		 *
