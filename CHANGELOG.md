@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Fix: Properly account for user setting value
 * New: Add unit testing
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Note compatibility through WP 5.3+

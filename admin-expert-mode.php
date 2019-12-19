@@ -297,7 +297,8 @@ class c2c_AdminExpertMode {
 			return self::$options[ $user_id ];
 		}
 
-		$existing_options = get_user_option( self::$admin_options_name, $user_id );
+		$user_setting_value = get_user_option( self::$admin_options_name, $user_id );
+
 		/**
 		 * Filteres whether the admin expert mode should be active by default.
 		 *
@@ -306,8 +307,8 @@ class c2c_AdminExpertMode {
 		 * @param bool $is_active Is admin expert mode active by default? Default false.
 		 * @param int  $user_id   The user ID.
 		 */
-		$default                   = (bool) apply_filters( 'c2c_admin_expert_mode_default', false, $user_id );
-		self::$options[ $user_id ] = wp_parse_args( $existing_options, array( self::$field_name => $default ) );
+		$default = (bool) apply_filters( 'c2c_admin_expert_mode_default', false, $user_id );
+		self::$options[ $user_id ][ self::$field_name ] = $user_setting_value || $default;
 
 		return self::$options[ $user_id ];
 	}
