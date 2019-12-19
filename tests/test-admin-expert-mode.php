@@ -4,10 +4,17 @@ defined( 'ABSPATH' ) or die();
 
 class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
+	protected static $transient = 'aem_activated';
+
 	public function setUp() {
 		parent::setUp();
 	}
 
+	public function tearDown() {
+		parent::tearDown();
+
+		delete_transient( self::$transient );
+	}
 
 	//
 	//
@@ -59,6 +66,14 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		if ( $priority ) {
 			$this->assertEquals( $priority, $prio );
 		}
+	}
+
+	public function test_plugin_activated() {
+		$this->assertFalse( get_transient( self::$transient ) );
+
+		c2c_AdminExpertMode::plugin_activated();
+
+		$this->assertEquals( 'show', get_transient( self::$transient ) );
 	}
 
 }
