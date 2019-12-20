@@ -107,4 +107,26 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
 	}
 
+	/*
+	 * filter: c2c_admin_expert_mode
+	 */
+
+	public function test_filter_cc2c_admin_expert_mode_enables_mode() {
+		add_filter( 'c2c_admin_expert_mode', '__return_true' );
+
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode', '__return_true' );
+	}
+
+	public function test_filter_cc2c_admin_expert_mode_disables_mode() {
+		add_filter( 'c2c_admin_expert_mode', '__return_false' );
+
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode', '__return_false' );
+	}
+
 }
