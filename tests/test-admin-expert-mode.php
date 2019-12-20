@@ -241,4 +241,29 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		$this->assertFalse( wp_style_is( self::$style_handle, 'registered' ) );
 	}
 
+	/*
+	 * enqueue_admin_css()
+	 */
+
+	public function test_enqueue_admin_css() {
+		c2c_AdminExpertMode::register_styles();
+		c2c_AdminExpertMode::enqueue_admin_css();
+
+		$this->assertTrue( wp_style_is( self::$style_handle, 'registered' ) );
+		$this->assertFalse( wp_style_is( self::$style_handle, 'enqueued' ) );
+
+		c2c_AdminExpertMode::reset();
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+		c2c_AdminExpertMode::enqueue_admin_css();
+
+		$this->assertTrue( wp_style_is( self::$style_handle, 'enqueued' ) );
+
+		// Cleanup.
+		wp_deregister_style( self::$style_handle );
+		$this->assertFalse( wp_style_is( self::$style_handle, 'registered' ) );
+		wp_dequeue_style( self::$style_handle );
+		$this->assertFalse( wp_style_is( self::$style_handle, 'enqueued' ) );
+	}
+
 }
