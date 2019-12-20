@@ -152,6 +152,19 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
+	 * Resets plugin to pre-pageload state.
+	 *
+	 * Note: This mostly clears runtime caches. It does not revert the plugin to
+	 * its freshly installed state.
+	 *
+	 * @access public
+	 * @since 2.6
+	 */
+	public static function reset() {
+		self::$options = array();
+	}
+
+	/**
 	 * Set a temporary flag (transient) to indicate the plugin was just activated.
 	 *
 	 * @access public

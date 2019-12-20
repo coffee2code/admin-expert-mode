@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * Fix: Properly account for user setting value
 * New: Add unit testing
+* New: Add `reset()` to reset plugin to pre-pageload state
 * Change: Clarify the inline docs for `c2c_admin_expert_mode_default` filter to indicate it won't override user setting value
 * Change: Remove memoization of `$is_active` value
 * Change: Allow class to be defined even when loaded outside the admin

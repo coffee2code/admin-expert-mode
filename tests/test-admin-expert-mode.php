@@ -6,6 +6,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 	protected static $admin_options_name = 'c2c_admin_expert_mode';
 	protected static $disable_query_key = 'disable-admin-expert-mode';
+	protected static $field_name = 'admin_expert_mode';
 	protected static $style_handle = 'c2c_AdminExpertMode_admin';
 	protected static $transient = 'aem_activated';
 	protected $user_id = 0;
@@ -19,6 +20,8 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 	public function tearDown() {
 		parent::tearDown();
+
+		c2c_AdminExpertMode::reset();
 
 		delete_transient( self::$transient );
 		delete_user_option( $this->user_id, self::$admin_options_name );
@@ -84,6 +87,25 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		c2c_AdminExpertMode::plugin_activated();
 
 		$this->assertEquals( 'show', get_transient( self::$transient ) );
+	}
+
+	/*
+	 * reset()
+	 */
+
+	public function test_reset() {
+		// This assigns a value to a user which then gets cached.
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+		$options = c2c_AdminExpertMode::get_options();
+
+		$this->assertTrue( $options[ self::$field_name ] );
+
+		// Change value.
+		update_user_option( $this->user_id, self::$admin_options_name, false );
+		c2c_AdminExpertMode::reset();
+		$options = c2c_AdminExpertMode::get_options();
+
+		$this->assertNotTrue( $options[ self::$field_name ] );
 	}
 
 	/*
