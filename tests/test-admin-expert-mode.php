@@ -129,4 +129,44 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		remove_filter( 'c2c_admin_expert_mode', '__return_false' );
 	}
 
+	/*
+	 * filter: c2c_admin_expert_mode_default
+	 */
+
+	public function test_filter_c2c_admin_expert_mode_default_true_enables_mode() {
+		add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
+
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode_default', '__return_true' );
+	}
+
+	public function test_filter_c2c_admin_expert_mode_default_false_leaves_mode_disabled() {
+		add_filter( 'c2c_admin_expert_mode_default', '__return_false' );
+
+		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode_default', '__return_false' );
+	}
+
+	public function test_filter_c2c_admin_expert_mode_default_true_does_not_override_user_setting() {
+		add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
+
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode_default', '__return_true' );
+	}
+
+	public function test_filter_c2c_admin_expert_mode_default_false_does_not_override_user_setting() {
+		add_filter( 'c2c_admin_expert_mode_default', '__return_false' );
+
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+
+		remove_filter( 'c2c_admin_expert_mode_default', '__return_false' );
+	}
+
 }
