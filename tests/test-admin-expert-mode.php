@@ -5,6 +5,7 @@ defined( 'ABSPATH' ) or die();
 class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 	protected static $admin_options_name = 'c2c_admin_expert_mode';
+	protected static $disable_query_key = 'disable-admin-expert-mode';
 	protected static $transient = 'aem_activated';
 	protected $user_id = 0;
 
@@ -21,6 +22,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		delete_transient( self::$transient );
 		delete_user_option( $this->user_id, self::$admin_options_name );
 		$this->user_id = 0;
+		unset( $_GET[ self::$disable_query_key ] );
 	}
 
 
@@ -95,6 +97,14 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		update_user_option( $this->user_id, self::$admin_options_name, true );
 
 		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+	}
+
+	public function test_query_key_disables_is_admin_expert_mode() {
+		$this->test_user_option_enables_is_admin_expert_mode_active();
+
+		$_GET[ self::$disable_query_key ] = '1';
+
+		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
 	}
 
 }
