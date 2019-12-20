@@ -4,17 +4,25 @@ defined( 'ABSPATH' ) or die();
 
 class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
+	protected static $admin_options_name = 'c2c_admin_expert_mode';
 	protected static $transient = 'aem_activated';
+	protected $user_id = 0;
 
 	public function setUp() {
 		parent::setUp();
+
+		$this->user_id = $this->factory->user->create( array( 'role' => 'editor' ) );
+		wp_set_current_user( $this->user_id );
 	}
 
 	public function tearDown() {
 		parent::tearDown();
 
 		delete_transient( self::$transient );
+		delete_user_option( $this->user_id, self::$admin_options_name );
+		$this->user_id = 0;
 	}
+
 
 	//
 	//
@@ -33,7 +41,6 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 			array( 'action', 'admin_enqueue_scripts',    'enqueue_admin_css',         10 ),
 		);
 	}
-
 
 
 	//
@@ -74,6 +81,20 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		c2c_AdminExpertMode::plugin_activated();
 
 		$this->assertEquals( 'show', get_transient( self::$transient ) );
+	}
+
+	/*
+	 * is_admin_expert_mode_active()
+	 */
+
+	public function test_default_value_for_is_admin_expert_mode_active() {
+		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
+	}
+
+	public function test_user_option_enables_is_admin_expert_mode_active() {
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
 	}
 
 }
