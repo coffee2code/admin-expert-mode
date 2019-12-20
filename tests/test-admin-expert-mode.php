@@ -6,6 +6,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 	protected static $admin_options_name = 'c2c_admin_expert_mode';
 	protected static $disable_query_key = 'disable-admin-expert-mode';
+	protected static $style_handle = 'c2c_AdminExpertMode_admin';
 	protected static $transient = 'aem_activated';
 	protected $user_id = 0;
 
@@ -200,6 +201,22 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 		$this->expectOutputRegex(
 			'|' . preg_quote( $expected ) . '|', c2c_AdminExpertMode::display_activation_notice() );
+	}
+
+	/*
+	 * register_styles()
+	 */
+
+	public function test_register_styles() {
+		$this->assertFalse( wp_style_is( self::$style_handle, 'registered' ) );
+
+		c2c_AdminExpertMode::register_styles();
+
+		$this->assertTrue( wp_style_is( self::$style_handle, 'registered' ) );
+
+		// Cleanup.
+		wp_deregister_style( self::$style_handle );
+		$this->assertFalse( wp_style_is( self::$style_handle, 'registered' ) );
 	}
 
 }
