@@ -169,4 +169,37 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		remove_filter( 'c2c_admin_expert_mode_default', '__return_false' );
 	}
 
+	/*
+	 * display_activation_notice()
+	 */
+
+	public function test_display_activation_notice_nothing_display_when_plugin_not_just_activated() {
+		$this->expectOutputRegex( '//', c2c_AdminExpertMode::display_activation_notice() );
+	}
+
+	public function test_display_activation_notice_displays_when_plugin_just_activated() {
+		$this->test_plugin_activated();
+
+		$this->expectOutputRegex( "/^<div id='message' class='updated fade'><p>.+<\/p><\/div>$/", c2c_AdminExpertMode::display_activation_notice() );
+	}
+
+	public function test_display_activation_notice_when_inactive() {
+		$this->test_plugin_activated();
+
+		$expected = '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="http://example.org/wp-admin/profile.php" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)';
+
+		$this->expectOutputRegex(
+			'|' . preg_quote( $expected ) . '|', c2c_AdminExpertMode::display_activation_notice() );
+	}
+
+	public function test_display_activation_notice_when_active() {
+		$this->test_plugin_activated();
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$expected = 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="http://example.org/wp-admin/profile.php" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)';
+
+		$this->expectOutputRegex(
+			'|' . preg_quote( $expected ) . '|', c2c_AdminExpertMode::display_activation_notice() );
+	}
+
 }
