@@ -97,14 +97,6 @@ class c2c_AdminExpertMode {
 	private static $options            = array();
 
 	/**
-	 * Is admin expert mode activate?
-	 *
-	 * @access private
-	 * @var bool
-	 */
-	private static $is_active          = false;
-
-	/**
 	 * Name of the query key used for disabling expert mode for current page.
 	 *
 	 * @since 2.4
@@ -213,14 +205,10 @@ class c2c_AdminExpertMode {
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param bool   $is_active  Is admin expert mode currently active?
+		 * @param bool   $is_active  Is admin expert mode currently enabled for user?
 		 * @param string $user_login Login of the current user.
 		 */
-		if ( self::$is_active || (bool) apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) ) ) {
-			self::$is_active = true;
-		}
-
-		return self::$is_active;
+		return (bool) apply_filters( 'c2c_admin_expert_mode', $options[ self::$field_name ], get_user_option( 'user_login' ) );
 	}
 
 	/**
