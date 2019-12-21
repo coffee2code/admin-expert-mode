@@ -197,7 +197,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_display_activation_notice_nothing_display_when_plugin_not_just_activated() {
-		$this->expectOutputRegex( '//', c2c_AdminExpertMode::display_activation_notice() );
+		$this->expectOutputRegex( '/^$/', c2c_AdminExpertMode::display_activation_notice() );
 	}
 
 	public function test_display_activation_notice_displays_when_plugin_just_activated() {
@@ -221,8 +221,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 		$expected = 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="http://example.org/wp-admin/profile.php" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)';
 
-		$this->expectOutputRegex(
-			'|' . preg_quote( $expected ) . '|', c2c_AdminExpertMode::display_activation_notice() );
+		$this->expectOutputRegex( '|' . preg_quote( $expected ) . '|', c2c_AdminExpertMode::display_activation_notice() );
 	}
 
 	/*
