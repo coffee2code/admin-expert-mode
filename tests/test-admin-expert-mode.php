@@ -265,4 +265,28 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		$this->assertFalse( wp_style_is( self::$style_handle, 'enqueued' ) );
 	}
 
+	/*
+	 * show_option()
+	 */
+
+	public function test_show_option_with_setting_disabled() {
+		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1">' . "\n" . '</label></td></tr>';
+
+		$this->expectOutputRegex(
+			'|' . preg_quote( $expected ) . '|',
+			c2c_AdminExpertMode::show_option( wp_get_current_user() )
+		);
+	}
+
+	public function test_show_option_with_setting_enabled() {
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1" checked=\'checked\'>' . "\n" . '</label></td></tr>';
+
+		$this->expectOutputRegex(
+			'|' . preg_quote( $expected ) . '|',
+			c2c_AdminExpertMode::show_option( wp_get_current_user() )
+		);
+	}
+
 }
