@@ -303,4 +303,38 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		$this->assertEquals( array( 'admin_expert_mode' => true ), c2c_AdminExpertMode::get_options() );
 	}
 
+	/*
+	 * maybe_save_options()
+	 */
+
+	public function test_maybe_save_options_called_by_user_without_privilege() {
+		$_POST[ self::$field_name ] = '1';
+
+		$user_id = $this->factory->user->create( array( 'role' => 'subscriber' ) );
+		wp_set_current_user( $user_id );
+
+		c2c_AdminExpertMode::maybe_save_options( $user_id );
+
+		$this->assertFalse( get_user_option( $user_id, self::$admin_options_name ) );
+	}
+
+	public function test_maybe_save_options_saves_setting_privileged_self() {
+		$_POST[ self::$field_name ] = '1';
+
+		c2c_AdminExpertMode::maybe_save_options( $this->user_id );
+
+		$this->assertEquals( '1', get_user_option( $this->user_id, self::$admin_options_name ) );
+	}
+
+	public function test_maybe_save_options_saves_setting_being_enabled() {
+		$_POST[ self::$field_name ] = '1';
+
+		$user_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $user_id );
+
+		c2c_AdminExpertMode::maybe_save_options( $this->user_id );
+
+		$this->assertEquals( '1', get_user_option( $this->user_id, self::$admin_options_name ) );
+	}
+
 }
