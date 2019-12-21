@@ -289,4 +289,18 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		);
 	}
 
+	/*
+	 * get_options()
+	 */
+
+	public function test_get_options_with_invalid_user() {
+		$this->assertEquals( array( 'admin_expert_mode' => false ), c2c_AdminExpertMode::get_options( 99999 ) );
+	}
+
+	public function test_get_options_default_implied_current_user() {
+		update_user_option( $this->user_id, self::$admin_options_name, true );
+
+		$this->assertEquals( array( 'admin_expert_mode' => true ), c2c_AdminExpertMode::get_options() );
+	}
+
 }
