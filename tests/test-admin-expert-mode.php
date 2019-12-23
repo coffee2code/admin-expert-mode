@@ -323,7 +323,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 		c2c_AdminExpertMode::maybe_save_options( $this->user_id );
 
-		$this->assertEquals( '1', get_user_option( $this->user_id, self::$admin_options_name ) );
+		$this->assertEquals( array( self::$field_name => true ), get_user_option( self::$admin_options_name, $this->user_id ) );
 	}
 
 	public function test_maybe_save_options_saves_setting_being_enabled() {
@@ -334,7 +334,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 
 		c2c_AdminExpertMode::maybe_save_options( $this->user_id );
 
-		$this->assertEquals( '1', get_user_option( $this->user_id, self::$admin_options_name ) );
+		$this->assertEquals( array( self::$field_name => true ), get_user_option( self::$admin_options_name, $this->user_id ) );
 	}
 
 }
