@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Admin Expert Mode
- * Version:     2.5
+ * Version:     2.6
  * Plugin URI:  http://coffee2code.com/wp-plugins/admin-expert-mode/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,13 +18,13 @@
  *
  * @package Admin_Expert_Mode
  * @author  Scott Reilly
- * @version 2.5
+ * @version 2.6
  */
 
 /*
  * TODO:
- * - Add inline documentation for class variables
  * - Define custom caps for being able to edit setting for another user
+ * - Facilitate making the setting apply network-wide (i.e. use update_user_meta(), etc instead)
  *
  */
 
@@ -112,7 +112,7 @@ class c2c_AdminExpertMode {
 	 * @since 1.8
 	 */
 	public static function version() {
-		return '2.5';
+		return '2.6';
 	}
 
 	/**

@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 5.3
-Stable tag: 2.5
+Stable tag: 2.6
 
 Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -161,6 +161,25 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 2.6 (2019-12-22) =
+Highlights:
+
+* This release is a minor update that fixes a bug with considering the user setting value, verifies compatibility through WordPress 5.3+, adds unit testing, and makes minor behind-the-scenes improvements.
+
+Details:
+
+* Fix: Properly account for user setting value
+* New: Add unit testing
+* New: Add `reset()` to reset plugin to pre-pageload state
+* Change: Clarify the inline docs for `c2c_admin_expert_mode_default` filter to indicate it won't override user setting value
+* Change: Remove memoization of `$is_active` value
+* Change: Allow class to be defined even when loaded outside the admin
+* Change: Note compatibility through WP 5.3+
+* Change: Add inline documentation for class variables
+* Change: Add link to CHANGELOG.md in README.md
+* Change: Update copyright date (2020)
+* Delete: Remove unused class variable `$config`
+
 = 2.5 (2019-04-04) =
 Highlights:
 
@@ -207,15 +226,13 @@ Details:
 * Change: Update copyright date (2018)
 * Change: Update installation instruction to prefer built-in installer over .zip file
 
-= 2.3 (2016-04-03) =
-* New: Add support for trimming new term.php page.
-* New: Add LICENSE file.
-* Change: Note compatibility through WP 4.5+.
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/admin-expert-mode/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.6 =
+Recommended minor update: fixed bug with considering user setting value, added unit testing, noted compatibility through WP 5.3+, created CHANGELOG.md to store historical changelog outside of readme.txt, and updated copyright date (2020).
 
 = 2.5 =
 Minor update: permitted admins to see and edit the value of the setting for other users, tweaked plugin initialization, noted compatibility through WP 5.1+, updated copyright date (2019), more.

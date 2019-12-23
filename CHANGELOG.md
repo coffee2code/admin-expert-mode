@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.6 _(2019-12-22)_
+
+### Highlights:
+
+* This release is a minor update that fixes a bug with considering the user setting value, verifies compatibility through WordPress 5.3+, adds unit testing, and makes minor behind-the-scenes improvements.
+
+### Details:
+
 * Fix: Properly account for user setting value
 * New: Add unit testing
 * New: Add `reset()` to reset plugin to pre-pageload state
