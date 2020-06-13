@@ -22,13 +22,6 @@
  */
 
 /*
- * TODO:
- * - Define custom caps for being able to edit setting for another user
- * - Facilitate making the setting apply network-wide (i.e. use update_user_meta(), etc instead)
- *
- */
-
-/*
 	Copyright (c) 2009-2020 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
