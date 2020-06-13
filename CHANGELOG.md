@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.4+
+
 ## 2.6 _(2019-12-22)_
 
 ### Highlights:
