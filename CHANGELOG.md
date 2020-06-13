@@ -6,6 +6,7 @@
 * Change: Update links to coffee2code.com to be HTTPS
 * Unit tests:
     * Change: Enhance `test_default_hooks()` to support testing for direct function callbacks rather than just method callbacks
+    * Change: Remove unnecessary unregistering of hooks
     * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
 
 ## 2.6 _(2019-12-22)_

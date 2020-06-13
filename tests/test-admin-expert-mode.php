@@ -141,8 +141,6 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		add_filter( 'c2c_admin_expert_mode', '__return_true' );
 
 		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode', '__return_true' );
 	}
 
 	public function test_filter_cc2c_admin_expert_mode_disables_mode() {
@@ -151,8 +149,6 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		update_user_option( $this->user_id, self::$admin_options_name, true );
 
 		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode', '__return_false' );
 	}
 
 	/*
@@ -163,16 +159,12 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 	}
 
 	public function test_filter_c2c_admin_expert_mode_default_false_leaves_mode_disabled() {
 		add_filter( 'c2c_admin_expert_mode_default', '__return_false' );
 
 		$this->assertFalse( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode_default', '__return_false' );
 	}
 
 	public function test_filter_c2c_admin_expert_mode_default_true_does_not_override_user_setting() {
@@ -181,8 +173,6 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		update_user_option( $this->user_id, self::$admin_options_name, true );
 
 		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 	}
 
 	public function test_filter_c2c_admin_expert_mode_default_false_does_not_override_user_setting() {
@@ -191,8 +181,6 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 		update_user_option( $this->user_id, self::$admin_options_name, true );
 
 		$this->assertTrue( c2c_AdminExpertMode::is_admin_expert_mode_active() );
-
-		remove_filter( 'c2c_admin_expert_mode_default', '__return_false' );
 	}
 
 	/*
