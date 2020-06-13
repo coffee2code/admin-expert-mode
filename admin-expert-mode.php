@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Admin Expert Mode
  * Version:     2.6
- * Plugin URI:  http://coffee2code.com/wp-plugins/admin-expert-mode/
+ * Plugin URI:  https://coffee2code.com/wp-plugins/admin-expert-mode/
  * Author:      Scott Reilly
- * Author URI:  http://coffee2code.com/
+ * Author URI:  https://coffee2code.com/
  * Text Domain: admin-expert-mode
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
