@@ -71,10 +71,13 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 	/**
 	 * @dataProvider get_default_hooks
 	 */
-	public function test_default_hooks( $hook_type, $hook, $function, $priority ) {
+	public function test_default_hooks( $hook_type, $hook, $function, $priority, $class_method = true ) {
+		$callback = $class_method ? array( 'c2c_AdminExpertMode', $function ) : $function;
+
 		$prio = $hook_type === 'action' ?
-			has_action( $hook, array( 'c2c_AdminExpertMode', $function ) ) :
-			has_filter( $hook, array( 'c2c_AdminExpertMode', $function ) );
+			has_action( $hook, $callback ) :
+			has_filter( $hook, $callback );
+
 		$this->assertNotFalse( $prio );
 		if ( $priority ) {
 			$this->assertEquals( $priority, $prio );

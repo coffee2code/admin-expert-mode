@@ -3,7 +3,9 @@
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
-* Change: Unit tests: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
+* Unit tests:
+    * Change: Enhance `test_default_hooks()` to support testing for direct function callbacks rather than just method callbacks
+    * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
 
 ## 2.6 _(2019-12-22)_
 
