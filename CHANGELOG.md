@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Hide the intro paragraph for the "Media Settings" page
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Fix: Re-hide descriptive paragraphs for "Privacy Settings" page
 * Change: Note compatibility through WP 5.4+

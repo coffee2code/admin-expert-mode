@@ -81,6 +81,9 @@ Specifically, this plugin removes:
 * Settings - General
     * Extra help text after input fields for "Tagline", "Site Address (URL)", "Email Address", "Timezone"
 
+* Settings - Media
+    * Text that explains sizes represent maximum dimensions in pixels of images uploaded to Media Library
+
 * Settings - Permalinks
     * Help text about "Common Settings"
     * Help text about "Optional"
