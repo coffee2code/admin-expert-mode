@@ -16,7 +16,7 @@
 
 ### Highlights:
 
-* This release is a minor update that fixes a bug with considering the user setting value, verifies compatibility through WordPress 5.3+, adds unit testing, and makes minor behind-the-scenes improvements.
+This release is a minor update that fixes a bug with considering the user setting value, verifies compatibility through WordPress 5.3+, adds unit testing, and makes minor behind-the-scenes improvements.
 
 ### Details:
 
@@ -36,7 +36,7 @@
 
 ### Highlights:
 
-* This minor release primarily adds the ability for admin users to see and edit the setting within other users' profiles and notes compatilibity through WordPress v5.1+. All other changes were behind-the-scenes for the general improvement of the plugin and its documentation.
+This minor release primarily adds the ability for admin users to see and edit the setting within other users' profiles and notes compatilibity through WordPress v5.1+. All other changes were behind-the-scenes for the general improvement of the plugin and its documentation.
 
 ### Details:
 
