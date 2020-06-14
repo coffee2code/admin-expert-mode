@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Hide the descriptions of what avatars and default avatars are on the "Discussion Settings" page
 * New: Hide the intro paragraph for the "Media Settings" page
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Fix: Re-hide descriptive paragraphs for "Privacy Settings" page

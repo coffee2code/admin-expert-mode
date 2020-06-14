@@ -12,6 +12,8 @@
 .tools-php .tool-box > p,
 .pressthis h2 + p, .pressthis h2 + p + p, .pressthis h3, .pressthis h4 + p,
 .options-general-php .description,
+.options-discussion-php .wrap h2.title + p,
+.options-discussion-php .wrap .defaultavatarpicker p:first-of-type,
 .options-media-php .wrap form p:first-of-type,
 .options-permalink-php form p:first-of-type,
 .export-php .wrap > p, .import-php .wrap h1 + p,
