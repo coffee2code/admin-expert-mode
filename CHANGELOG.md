@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.7 _(2020-06-14)_
+
+### Highlights:
+
+This release is a recommended minor update that updates hiding of text on "Privacy Settings" page, hides text on "Media Settings" page, hides text relating to avatars on "Discussion Setting" page, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and notes compatibility through WP 5.4+.
+
+### Details:
+
 * New: Hide the descriptions of what avatars and default avatars are on the "Discussion Settings" page
 * New: Hide the intro paragraph for the "Media Settings" page
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it

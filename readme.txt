@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 5.4
-Stable tag: 2.6
+Stable tag: 2.7
 
 Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -172,6 +172,24 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 2.7 (2020-06-14) =
+Highlights:
+
+* This release is a recommended minor update that updates hiding of text on "Privacy Settings" page, hides text on "Media Settings" page, hides text relating to avatars on "Discussion Setting" page, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and notes compatibility through WP 5.4+.
+
+Details:
+
+* New: Hide the descriptions of what avatars and default avatars are on the "Discussion Settings" page
+* New: Hide the intro paragraph for the "Media Settings" page
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it
+* Fix: Re-hide descriptive paragraphs for "Privacy Settings" page
+* Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
+* Unit tests:
+    * Change: Enhance `test_default_hooks()` to support testing for direct function callbacks rather than just method callbacks
+    * Change: Remove unnecessary unregistering of hooks
+    * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
+
 = 2.6 (2019-12-22) =
 Highlights:
 
@@ -215,32 +233,13 @@ Details:
 * Change: Update License URI to be HTTPS
 * Change: Split paragraph in README.md's "Support" section into two
 
-= 2.4 (2018-04-13) =
-* New: Add ability to disable expert mode for current display of a given page by appending '?disable-admin-expert-mode=1' to the URL
-* New: Hide descriptive paragraphs for "Privacy Settings" page
-* New: Hide description for "Biographical Info" field in user profile
-* New: Hide description for "Sessions" field in user profile
-* New: Add README.md
-* Change: Delete the user option if the checkbox wasn't checked
-* Change: Use `sprintf()` to format output markup rather than concatenating strings and variables
-* Change: (Hardening) Check that current user is able to edit the user being edited before saving the user option
-* Change: (Hardening) Escape the setting name before use in attributes
-* Change: Set the value of the checkbox to '1' instead of 'true'
-* Change: Use `checked()` helper function rather than reinventing it
-* Change: Cast value returned from 'c2c_admin_expert_mode_default' filter as bool
-* Change: Remove unused private static variable `$activating`
-* Change: Tweak readme.txt (minor content changes, spacing)
-* Change: Tweak plugin description
-* Change: Add GitHub link to readme
-* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
-* Change: Note compatibility through WP 4.9+
-* Change: Update copyright date (2018)
-* Change: Update installation instruction to prefer built-in installer over .zip file
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/admin-expert-mode/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.7 =
+Recommended minor update: updated hiding of text on "Privacy Settings" page, hid text on "Media Settings" page, hid text relating to avatars on "Discussion Setting" page, added TODO.md file, updated a few URLs to be HTTPS, expanded unit testing, and noted compatibility through WP 5.4+.
 
 = 2.6 =
 Recommended minor update: fixed bug with considering user setting value, added unit testing, noted compatibility through WP 5.3+, created CHANGELOG.md to store historical changelog outside of readme.txt, and updated copyright date (2020).
