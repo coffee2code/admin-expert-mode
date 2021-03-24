@@ -8,7 +8,7 @@ Requires at least: 2.8
 Tested up to: 5.7
 Stable tag: 2.7
 
-Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
+Allows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
 
 == Description ==
