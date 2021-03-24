@@ -5,7 +5,7 @@ Tags: admin, expert, help, remove inline documentation, coffee2code
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 5.4
+Tested up to: 5.7
 Stable tag: 2.7
 
 Alows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
