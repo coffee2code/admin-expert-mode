@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * New: Hide the description of the dashboard's welcome panel
+* New: Hide the label for the "Update Services" on the "Settings - Writing" page
 * New: Hide the extra description for the "Search engine visibility" on the "Settings - Reading" page
 * Fix: Fix typo in plugin description
 * Change: Note compatibility through WP 5.7+

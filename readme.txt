@@ -84,6 +84,9 @@ Specifically, this plugin removes:
 * Settings - General
     * Extra help text after input fields for "Tagline", "Site Address (URL)", "Email Address", "Timezone"
 
+* Settings - Writing
+    * Label for "Update Services"
+
 * Settings - Reading
     * Extra description for "Search engine visibility"
 
