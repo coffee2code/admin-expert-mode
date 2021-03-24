@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 5.7
-Stable tag: 2.7
+Stable tag: 2.8
 
 Allows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -181,6 +181,20 @@ add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
 
 == Changelog ==
 
+= 2.8 (2021-03-24) =
+Highlights:
+
+* This release is a recommended minor update that hides text in the welcome panel on the dashboard page, hides text on the "Settings - Writing" and "Settings - Reading" pages, and notes compatibility through WP 5.7+.
+
+Details:
+
+* New: Hide the description of the dashboard's welcome panel
+* New: Hide the label for the "Update Services" on the "Settings - Writing" page
+* New: Hide the extra description for the "Search engine visibility" on the "Settings - Reading" page
+* Fix: Fix typo in plugin description
+* Change: Note compatibility through WP 5.7+
+* Change: Update copyright date (2021)
+
 = 2.7 (2020-06-14) =
 Highlights:
 
@@ -218,34 +232,11 @@ Details:
 * Change: Update copyright date (2020)
 * Delete: Remove unused class variable `$config`
 
-= 2.5 (2019-04-04) =
-Highlights:
-
-* This minor release primarily adds the ability for admin users to see and edit the setting within other users' profiles and notes compatilibity through WordPress v5.1+. All other changes were behind-the-scenes for the general improvement of the plugin and its documentation.
-
-Details:
-
-* New: Permit admins to see and edit the value of the setting for other users
-* Change: Add user ID as an additional argument to the `c2c_admin_expert_mode_default` filter
-* Change: Allow `get_options()` to accept a user ID and memoize values by user ID
-* Change: Initialize plugin on `plugins_loaded` action instead of on load
-* Change: Merge `do_init()` into `init()`
-* Change: Modify help text for checkbox
-* Change: Cast return value of `c2c_admin_expert_mode` filter as boolean
-* Change: (Hardening) Escape output of user profile URL
-* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
-* New: Add inline documentation for hooks
-* Change: Improve function docblocks by adding missing `@see`, `@access`, `@param`, and `@return` tags
-* Change: Rename readme.txt section from 'Filters' to 'Hooks'
-* Change: Note compatibility through WP 5.1+
-* Change: Update copyright date (2019)
-* Change: Update License URI to be HTTPS
-* Change: Split paragraph in README.md's "Support" section into two
-
-_Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/admin-expert-mode/blob/master/CHANGELOG.md)._
-
 
 == Upgrade Notice ==
+
+= 2.8 =
+Recommended minor update: hid text on "Welcome to WordPress!" panel on dashboard, hid text on "Setttings - Writing" and "Settings - Reading" pages, noted compatibility through WP 5.7+, and updated copyright date (2021).
 
 = 2.7 =
 Recommended minor update: updated hiding of text on "Privacy Settings" page, hid text on "Media Settings" page, hid text relating to avatars on "Discussion Setting" page, added TODO.md file, updated a few URLs to be HTTPS, expanded unit testing, and noted compatibility through WP 5.4+.

@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.8 _(2021-03-24)_
+
+### Highlights:
+
+This release is a recommended minor update that hides text in the welcome panel on the dashboard page, hides text on the "Settings - Writing" and "Settings - Reading" pages, and notes compatibility through WP 5.7+.
+
+### Details:
+
 * New: Hide the description of the dashboard's welcome panel
 * New: Hide the label for the "Update Services" on the "Settings - Writing" page
 * New: Hide the extra description for the "Search engine visibility" on the "Settings - Reading" page

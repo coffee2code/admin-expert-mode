@@ -61,7 +61,7 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_version() {
-		$this->assertEquals( '2.7', c2c_AdminExpertMode::version() );
+		$this->assertEquals( '2.8', c2c_AdminExpertMode::version() );
 	}
 
 	public function test_hooks_plugins_loaded() {
