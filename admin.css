@@ -24,6 +24,7 @@
 .user-sessions-wrap .description,
 .options-privacy-php .wrap p,
 #welcome-panel .about-description,
+.option-site-visibility .description,
 #addcat .form-field p, #addtag .form-field p, .edit-tags-php #col-right .form-wrap, .install-help { display: none; }
 /* Re-show some things that got hidden */
 .update-core-php #wpbody-content .wrap > p:first-of-type,

@@ -84,6 +84,9 @@ Specifically, this plugin removes:
 * Settings - General
     * Extra help text after input fields for "Tagline", "Site Address (URL)", "Email Address", "Timezone"
 
+* Settings - Reading
+    * Extra description for "Search engine visibility"
+
 * Settings - Discussion
     * Description of what avatars are
     * Description of purpose of default avatar
