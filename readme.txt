@@ -19,6 +19,9 @@ The plugin's behavior is made available as a per-user profile option. Each user 
 
 Specifically, this plugin removes:
 
+* Dashboard
+    * Description of "Welcome to WordPress!" panel
+
 * Categories
     * Description of "Category Name"
     * Description of "Category Slug"

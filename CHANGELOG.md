@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Hide the description of the dashboard's welcome panel
 * Fix: Fix typo in plugin description
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
