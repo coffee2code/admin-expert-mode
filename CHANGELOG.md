@@ -3,6 +3,11 @@
 ## _(in-progress)_
 * Change: Tweak installation instruction
 * Change: Note compatibility through WP 5.8+
+* Unit tests:
+    * Change: Restructure unit test file structure
+        * Change: Move `tests/test-*` into `tests/phpunit/tests/`
+        * Change: Move `tests/bootstrap.php` to `tests/phpunit/`
+        * Change: Move `bin/` into `phpunit/`
 
 ## 2.8 _(2021-03-24)_
 
