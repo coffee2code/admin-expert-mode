@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * Change: Tweak installation instruction
 * Change: Note compatibility through WP 5.8+
+* Change: Change a tag in readme.txt header
 * Unit tests:
     * Change: Restructure unit test file structure
         * Change: Move `tests/test-*` into `tests/phpunit/tests/`
