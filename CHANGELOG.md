@@ -9,6 +9,7 @@
         * Change: Move `tests/bootstrap.php` to `tests/phpunit/`
         * Change: Move `bin/` into `phpunit/`
     * Change: In bootstrap, store path to plugin file constant so its value can be used within that file and in test file
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 
 ## 2.8 _(2021-03-24)_
