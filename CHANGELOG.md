@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Use stricter equality check in a conditional statement
 * Change: Tweak installation instruction
 * Change: Note compatibility through WP 5.8+
 * Change: Change a tag in readme.txt header

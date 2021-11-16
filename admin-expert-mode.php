@@ -249,7 +249,7 @@ class c2c_AdminExpertMode {
 	 */
 	public static function show_option( $user ) {
 		$current_user = wp_get_current_user();
-		$is_current_user_profile_page = ( $user->ID == $current_user->ID );
+		$is_current_user_profile_page = ( $user->ID === $current_user->ID );
 
 		// Only show on current user's own profile, or other user profiles if current
 		// user has appropriate capabilities.
