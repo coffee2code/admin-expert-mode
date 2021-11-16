@@ -136,47 +136,14 @@ Yes. Use the 'disable-admin-expert-mode' query parameter with a value of '1' to 
 Yes.
 
 
-== Hooks ==
+== Developer Documentation ==
 
-The plugin is further customizable via two filters. Code using these filters should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain). Less ideally, you could put them in your active theme's functions.php file.
+Developer documentation can be found in [DEVELOPER-DOCS.md](https://github.com/coffee2code/admin-expert-mode/blob/master/DEVELOPER-DOCS.md). That documentation covers the hooks provided by the plugin.
 
-**c2c_admin_expert_mode (filter)**
+As an overview, these are the hooks provided by the plugin:
 
-The 'c2c_admin_expert_mode' filter allows you to dynamically determine whether the admin expert mode should be active.
-
-Arguments:
-
-* $is_active (bool): Boolean indicating if admin expert mode is currently active
-* $user_login (string): Login of the current user
-
-Example:
-
-`
-<?php
-// Never let user 'bob' activate admin expert mode
-function aem_never_let_bob_activate( $is_active, $user_login ) {
-	if ( 'bob' == $user_login )
-		return false;
-	return $is_active; // Otherwise, preserve activation status for user
-}
-add_filter( 'c2c_admin_expert_mode', 'aem_never_let_bob_activate', 10, 2 );?>
-`
-
-**c2c_admin_expert_mode_default (filter)**
-
-The 'c2c_admin_expert_mode_default' filter allows you to specify whether admin expert mode should be active for users by default or not. This filter only applies to users who visit the admin for the first time after the plugin is activated. Once a user visits the admin, their setting gets set to the default state and will no longer be affected by this filter. If you wish to affect the setting for existing users, use the 'c2c_admin_expert_mode' filter instead.
-
-Arguments:
-
-* $is_active (bool): Boolean indicating if admin expert mode is active by default (default is false)
-
-Example:
-
-`
-<?php // Enable admin expert mode for all users by default
-add_filter( 'c2c_admin_expert_mode_default', '__return_true' );
-?>
-`
+* `c2c_admin_expert_mode`         : Filter to dynamically determine whether the admin expert mode should be active.
+* `c2c_admin_expert_mode_default` : Filter to customize whether admin expert mode should be active for users by default or not.
 
 
 == Changelog ==
