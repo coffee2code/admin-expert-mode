@@ -176,8 +176,10 @@ class c2c_AdminExpertMode {
 	public static function display_activation_notice() {
 		if ( get_transient( 'aem_activated' ) ) {
 			if ( self::is_admin_expert_mode_active() ) {
+				/* translators: %s: URL to user's profile page in the admin. */
 				$msg = __( 'Expert mode is now enabled for you since you had it previously enabled. You can disable it in your <a href="%s" title="Profile">profile</a>. Reminder: other admins must separately enable expert mode for themselves via their own profiles. (See the readme.txt for more advanced controls.)', 'admin-expert-mode' );
 			} else {
+				/* translators: %s: URL to user's profile page in the admin. */
 				$msg = __( '<strong>NOTE:</strong> You must enable expert mode for yourself (in your <a href="%s" title="Profile">profile</a>) for it to take effect. Other admin users must do the same for themselves as well. (See the readme.txt for more advanced controls.)', 'admin-expert-mode' );
 			}
 			$msg = sprintf( $msg, esc_url( admin_url( 'profile.php' ) ) );

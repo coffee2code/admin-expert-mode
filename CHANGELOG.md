@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Add newlines after output block tags and remove newline after label tag
+* Change: Add translator comments to explain placeholders
 * Change: Use stricter equality check in a conditional statement
 * Change: Tweak installation instruction
 * Change: Note compatibility through WP 5.8+
