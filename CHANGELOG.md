@@ -18,6 +18,7 @@
     * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
     * Change: Remove 'test-' prefix from unit test files
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+* New: Add a few more possible TODO items
 
 ## 2.8 _(2021-03-24)_
 
