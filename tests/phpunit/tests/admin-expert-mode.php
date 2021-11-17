@@ -261,10 +261,10 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_show_option_with_setting_disabled() {
-		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1"></label></td></tr>';
+		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1"></label></td></tr>' . "\n";
 
 		$this->expectOutputRegex(
-			'|' . preg_quote( $expected ) . '|',
+			'|^' . preg_quote( $expected ) . '$|',
 			c2c_AdminExpertMode::show_option( wp_get_current_user() )
 		);
 	}
@@ -272,10 +272,10 @@ class Admin_Expert_Mode_Test extends WP_UnitTestCase {
 	public function test_show_option_with_setting_enabled() {
 		update_user_option( $this->user_id, self::$admin_options_name, true );
 
-		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1" checked=\'checked\'></label></td></tr>';
+		$expected = '<tr><th scope="row"></th><td><label for="admin_expert_mode"><input type="checkbox" id="admin_expert_mode" name="admin_expert_mode" value="1" checked=\'checked\'></label></td></tr>' . "\n";
 
 		$this->expectOutputRegex(
-			'|' . preg_quote( $expected ) . '|',
+			'|^' . preg_quote( $expected ) . '$|',
 			c2c_AdminExpertMode::show_option( wp_get_current_user() )
 		);
 	}

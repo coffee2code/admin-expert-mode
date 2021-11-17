@@ -10,6 +10,7 @@
 * Change: Note compatibility through WP 5.8+
 * Change: Change a tag in readme.txt header
 * Unit tests:
+    * Change: Use stricter regex in a couple tests
     * Change: Restructure unit test file structure
         * Change: Move `tests/test-*` into `tests/phpunit/tests/`
         * Change: Move `tests/bootstrap.php` to `tests/phpunit/`
