@@ -182,7 +182,7 @@ class c2c_AdminExpertMode {
 			}
 			$msg = sprintf( $msg, esc_url( admin_url( 'profile.php' ) ) );
 
-			echo "<div id='message' class='updated fade'><p>$msg</p></div>";
+			echo "<div id='message' class='updated fade'><p>$msg</p></div>\n";
 		}
 	}
 
@@ -262,7 +262,7 @@ class c2c_AdminExpertMode {
 		echo '<tr><th scope="row">' . self::$prompt . '</th>';
 		echo '<td>';
 		printf(
-			'<label for="%s"><input type="checkbox" id="%s" name="%s" value="%s"%s>' . "\n",
+			'<label for="%s"><input type="checkbox" id="%s" name="%s" value="%s"%s>',
 			esc_attr( self::$field_name ),
 			esc_attr( self::$field_name ),
 			esc_attr( self::$field_name ),
@@ -270,7 +270,7 @@ class c2c_AdminExpertMode {
 			checked( (bool) $options[ self::$field_name ], true, false )
 		);
 		echo self::$help_text;
-		echo '</label></td></tr>';
+		echo "</label></td></tr>\n";
 	}
 
 	/**
