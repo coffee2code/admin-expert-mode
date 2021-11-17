@@ -109,7 +109,7 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
-	 * Initializer.
+	 * Initializes plugin.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -158,7 +158,7 @@ class c2c_AdminExpertMode {
 	}
 
 	/**
-	 * Set a temporary flag (transient) to indicate the plugin was just activated.
+	 * Sets a temporary flag (transient) to indicate the plugin was just activated.
 	 *
 	 * @access public
 	 * @since 1.5.0
@@ -192,8 +192,8 @@ class c2c_AdminExpertMode {
 	 * Indicates if admin expert mode is active for the current user.
 	 *
 	 * Takes the following into account in this order:
-	 * * Value of 'c2c_admin_expert_mode' filter, if true
-	 * * Value of the per-user setting
+	 * - Value of 'c2c_admin_expert_mode' filter, if true
+	 * - Value of the per-user setting
 	 *
 	 * @access public
 	 * @since 1.5.0
@@ -208,7 +208,7 @@ class c2c_AdminExpertMode {
 		}
 
 		/**
-		 * Filteres whether the admin expert mode should be active for the current
+		 * Filters whether the admin expert mode should be active for the current
 		 * user.
 		 *
 		 * @since 1.5.0

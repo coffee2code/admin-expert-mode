@@ -5,6 +5,7 @@
 * Change: Add newlines after output block tags and remove newline after label tag
 * Change: Add translator comments to explain placeholders
 * Change: Use stricter equality check in a conditional statement
+* Change: Tweak inline function documentation (typo, verb tenses, bullet list syntax)
 * Change: Tweak installation instruction
 * Change: Note compatibility through WP 5.8+
 * Change: Change a tag in readme.txt header
