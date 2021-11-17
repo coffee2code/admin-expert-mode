@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
 Tested up to: 5.8
-Stable tag: 2.8
+Stable tag: 2.9
 
 Allows users to hide inline documentation and help text that are geared for beginning users in the WordPress admin.
 
@@ -148,6 +148,33 @@ As an overview, these are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 2.9 (2021-11-16) =
+Highlights:
+
+This minor release adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, reorganizes unit tests, and minor tweaks.
+
+Details:
+
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
+* Change: Add newlines after output block tags and remove newline after label tag
+* Change: Add translator comments to explain placeholders
+* Change: Use stricter equality check in a conditional statement
+* Change: Tweak inline function documentation (typo, verb tenses, bullet list syntax)
+* Change: Tweak installation instruction
+* Change: Note compatibility through WP 5.8+
+* Change: Change a tag in readme.txt header
+* Unit tests:
+    * Change: Use stricter regex in a couple tests
+    * Change: Restructure unit test file structure
+        * Change: Move `tests/test-*` into `tests/phpunit/tests/`
+        * Change: Move `tests/bootstrap.php` to `tests/phpunit/`
+        * Change: Move `bin/` into `phpunit/`
+    * Change: In bootstrap, store path to plugin file constant so its value can be used within that file and in test file
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
+    * Change: Remove 'test-' prefix from unit test files
+    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+* New: Add a few more possible TODO items
+
 = 2.8 (2021-03-24) =
 Highlights:
 
@@ -180,27 +207,11 @@ Details:
     * Change: Remove unnecessary unregistering of hooks
     * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
 
-= 2.6 (2019-12-22) =
-Highlights:
-
-* This release is a minor update that fixes a bug with considering the user setting value, verifies compatibility through WordPress 5.3+, adds unit testing, and makes minor behind-the-scenes improvements.
-
-Details:
-
-* Fix: Properly account for user setting value
-* New: Add unit testing
-* New: Add `reset()` to reset plugin to pre-pageload state
-* Change: Clarify the inline docs for `c2c_admin_expert_mode_default` filter to indicate it won't override user setting value
-* Change: Remove memoization of `$is_active` value
-* Change: Allow class to be defined even when loaded outside the admin
-* Change: Note compatibility through WP 5.3+
-* Change: Add inline documentation for class variables
-* Change: Add link to CHANGELOG.md in README.md
-* Change: Update copyright date (2020)
-* Delete: Remove unused class variable `$config`
-
 
 == Upgrade Notice ==
+
+= 2.9 =
+Minor release: added DEVELOPER-DOCS.md, noted compatibility through WP 5.8+, reorganized unit tests, and minor tweaks.
 
 = 2.8 =
 Recommended minor update: hid text on "Welcome to WordPress!" panel on dashboard, hid text on "Setttings - Writing" and "Settings - Reading" pages, noted compatibility through WP 5.7+, and updated copyright date (2021).

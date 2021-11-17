@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.9 _(2021-11-16)_
+
+### Highlights:
+
+This minor release adds DEVELOPER-DOCS.md, notes compatibility through WP 5.8+, reorganizes unit tests, and minor tweaks.
+
+### Details:
+
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Add newlines after output block tags and remove newline after label tag
 * Change: Add translator comments to explain placeholders
