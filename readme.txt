@@ -151,7 +151,7 @@ As an overview, these are the hooks provided by the plugin:
 = 2.8 (2021-03-24) =
 Highlights:
 
-* This release is a recommended minor update that hides text in the welcome panel on the dashboard page, hides text on the "Settings - Writing" and "Settings - Reading" pages, and notes compatibility through WP 5.7+.
+This release is a recommended minor update that hides text in the welcome panel on the dashboard page, hides text on the "Settings - Writing" and "Settings - Reading" pages, and notes compatibility through WP 5.7+.
 
 Details:
 
@@ -165,7 +165,7 @@ Details:
 = 2.7 (2020-06-14) =
 Highlights:
 
-* This release is a recommended minor update that updates hiding of text on "Privacy Settings" page, hides text on "Media Settings" page, hides text relating to avatars on "Discussion Setting" page, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and notes compatibility through WP 5.4+.
+This release is a recommended minor update that updates hiding of text on "Privacy Settings" page, hides text on "Media Settings" page, hides text relating to avatars on "Discussion Setting" page, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and notes compatibility through WP 5.4+.
 
 Details:
 
